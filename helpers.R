@@ -14,7 +14,7 @@ plot_UL = function (min = 0, max = 2011, df1,df2){
       df_ul = inner_join(docs_consul,remuneration,by=c("Location", "Year"))
       
       
-      plot_ul = ggplot (df_ul,aes(x= Salary, y=Nmr_consult , color = Location)) +
+      plot_ul = ggplot(df_ul,aes(x= Salary, y=Nmr_consult , color = Location)) +
             geom_text(aes(label=Location)) +
             theme(legend.position="none")
 

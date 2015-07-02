@@ -1,6 +1,7 @@
 
 library (ggplot2)
 library (dplyr)
+source("multiplot.R")
 
 docs_consul <- readRDS("Shiny Project/Prohect-Shiny/data/docs_consultation.rds")
 remuneration <- readRDS("Shiny Project/Prohect-Shiny/data/remuneration.rds")
