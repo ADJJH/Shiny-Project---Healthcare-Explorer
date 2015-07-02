@@ -18,6 +18,7 @@ shinyServer(
                    args$df1 <- docs_consul
                    args$df2 <- remuneration
                    do.call(plot_UL, args )
+                   
             })
       }
 )
