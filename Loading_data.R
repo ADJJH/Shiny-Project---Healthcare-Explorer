@@ -31,7 +31,7 @@ colnames(remuneration) = c("Location","Year","Type_doc_job",'Salary')
 ## DF DOCS_CONSULTATION
 
 #Transposing years
-docs_consultation1 = melt(docs_consultation,id = 'Location')
+docs_consultation = melt(docs_consultation,id = 'Location')
 colnames(docs_consultation) = c("Location","Year", "Nmr_consult")
 
 

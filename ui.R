@@ -57,7 +57,12 @@ shinyUI(
                         )
                   ),
                        
-                  mainPanel(textOutput("text1"))
+                  mainPanel(
+                              textOutput("text1"),
+                              plotOutput("plot_UL")
+                            
+                            
+                  )
             
             )
       )
