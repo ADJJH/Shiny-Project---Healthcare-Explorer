@@ -28,8 +28,17 @@ shinyServer(
                   ul <- do.call(plot_UL,args)
                   
                   #UR
+                  args_ur=list()
+                  args_ur$min <- input$year[1]
+                  args_ur$max <- input$year[2]
+                  args_ur$beds <- beds
+                  args_ur$hosp_stay <- hosp_stay
+                  args_ur$country <- input$country[1]
+                  ur <- do.call(plot_UR,args_ur)
                   
-                  multiplot(ul,ul,ul,ul,cols=2)
+                  
+                  
+                  multiplot(ul,ul,ur,ul,cols=2)
                    
             })
       }

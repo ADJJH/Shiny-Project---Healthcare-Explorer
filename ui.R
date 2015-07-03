@@ -1,4 +1,5 @@
-countries_oecd = c('Australia',
+countries_oecd = c("",
+                  'Australia',
                    'Austria',
                    'Belgium',
                    'Brazil',
@@ -46,14 +47,15 @@ shinyUI(
                   sidebarPanel(
                         helpText("Comparison among countries "), ## subtitle      
                         selectInput("country",  
-                                    label = "Choose a variable to display",
-                                    choices = countries_oecd
+                                    label = "Choose a country to highlight",
+                                    choices = countries_oecd,
+                                    selected = NULL
                                     
                         ),
                                                 
                         #textInput(inputId, label, value = "", ...)
                         sliderInput("year",  # choose the range
-                                    label = "Range of interest:",
+                                    label = "Years",
                                     min = 2000, max = 2013, value = c(2000, 2013)
                         )
                   ),

@@ -34,20 +34,22 @@ plot_UR = function (min = 1960, max = 2011, beds,hosp_stay,country){
       beds$Year = as.integer(as.character(beds$Year))
       hosp_stay$Year = as.integer(as.character(hosp_stay$Year))
       hosp_stay$nmr_days = as.integer(as.character(hosp_stay$nmr_days))
+      year = max
       
       df_ur = inner_join(beds,hosp_stay,by=c("Location", "Year"))
+      selected_ur=filter(df_ur,Location== country, Year==year)
       
-      year = max 
       
-      df_ur %>%
-            filter(., Year==year) %>%
-            ggplot (.,aes(x= nmr_days, y=beds_nmr , color = Location)) +
-            geom_point(colour="#C0C0C0",size = 8) +
-            geom_point(data=selected_ur,colour="#000099",size = 8)+
-            theme(legend.position="none")+
-            ylab("Total beds [per 1k inhabitants]")+
-            xlab("Length of stay [days]")      
+      plot_ur<- df_ur %>%
+                  filter(., Year==year) %>%
+                        ggplot (.,aes(x= nmr_days, y=beds_nmr , color = Location)) +
+                        geom_point(colour="#C0C0C0",size = 8) +
+                        geom_point(data=selected_ur,colour="#000099",size = 8)+
+                        theme(legend.position="none")+
+                        ylab("Total beds [per 1k inhabitants]")+
+                        xlab("Length of stay [days]")     
       
+      return (plot_ur)      
       
 }
       
