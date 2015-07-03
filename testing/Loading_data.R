@@ -46,9 +46,19 @@ saveRDS(remuneration, file="Shiny Project/Prohect-Shiny/data/remuneration.rds")
 beds = read.csv("Shiny Project/Prohect-Shiny/Sources/HOSPITALBED-ACUTE-1000HAB_60-13.csv",
                              skip = 8, header=TRUE, check.names=FALSE )[ ,1:55]
 
+beds = melt(beds,id = 'Location')
+colnames(beds) = c("Location","Year", "beds_nmr")
+
+# only up to 2012!
+
+hosp_stay = read.csv("Shiny Project/Prohect-Shiny/Sources/HOSPITALSTAY_60_13.csv",
+                       skip = 8, header=TRUE, check.names=FALSE )[ ,1:54]
+hosp_stay = melt(hosp_stay,id = 'Location')
+colnames(hosp_stay) = c("Location","Year", "nmr_days")
 
 
-
+saveRDS(beds, file="Shiny Project/Prohect-Shiny/data/beds.rds")
+saveRDS(hosp_stay, file="Shiny Project/Prohect-Shiny/data/hosp_stay.rds")
 
 
 
