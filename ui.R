@@ -60,7 +60,7 @@ shinyUI(
                        
                   mainPanel(
                               textOutput("text1"),
-                              plotOutput("plot_UL")
+                              plotOutput("plot_ALL")
                             
                             
                   )
