@@ -24,9 +24,6 @@ plot_UL = function (min = 1960, max = 2011, df1,df2,country){
       return (plot_ul)
 }
 
-#source("multiplot.R")
 
-
-#multiplot(plot_ul,plot_ul,plot_ul,plot_ul, cols=2)
 
 
