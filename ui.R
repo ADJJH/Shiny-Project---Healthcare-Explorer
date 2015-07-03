@@ -45,9 +45,10 @@ shinyUI(
                  
                   sidebarPanel(
                         helpText("Comparison among countries "), ## subtitle      
-                        selectInput("country",  # choose the residents
+                        selectInput("country",  
                                     label = "Choose a variable to display",
                                     choices = countries_oecd
+                                    
                         ),
                                                 
                   

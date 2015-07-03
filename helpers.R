@@ -1,5 +1,5 @@
 
-plot_UL = function (min = 0, max = 2011, df1,df2){
+plot_UL = function (min = 1960, max = 2011, df1,df2,country){
 
       docs_consul=df1
       remuneration = df2
@@ -13,10 +13,13 @@ plot_UL = function (min = 0, max = 2011, df1,df2){
       year = max
       df_ul = inner_join(docs_consul,remuneration,by=c("Location", "Year"))
       
+      selected=filter(df_ul,Location == country)
       
-      plot_ul = ggplot(df_ul,aes(x= Salary, y=Nmr_consult , color = Location)) +
-            geom_text(aes(label=Location)) +
-            theme(legend.position="none")
+      plot_ul= ggplot (df_ul,aes(x= Salary, y=Nmr_consult , color = Location)) +
+                  geom_point(colour="#C0C0C0",size = 8) +
+                  geom_point(data=selected,colour="#000099",size = 8)+
+                  theme(legend.position="none")
+            
 
       return (plot_ul)
 }

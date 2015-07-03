@@ -20,6 +20,7 @@ shinyServer(
                   args$max <- input$year[2]
                   args$df1 <- docs_consul
                   args$df2 <- remuneration
+                  args$country <- input$country[1]
                   
                   x <- do.call(plot_UL,args)
 
