@@ -99,6 +99,30 @@ df_br %>%
 
 #********************************* bottom left *******************************
 
+spending <- readRDS("Shiny Project/Prohect-Shiny/data/spending.rds")
+mri <- readRDS("Shiny Project/Prohect-Shiny/data/mri.rds")
+med_units <- readRDS("Shiny Project/Prohect-Shiny/data/ct.rds")
+
+spending$GDPp = as.numeric(as.character(spending$GDPp))
+spending$Year = as.integer(as.character(spending$Year))
+med_units$Year = as.integer(as.character(med_units$Year))
+med_units$med_units = as.integer(as.character(med_units$med_units))
+
+df_bl = inner_join(spending,med_units,by=c("Location", "Year"))
+
+year = 2011
+country_var = "Japan"
+selected_bl=filter(df_bl,Location== country_var, Year==year)
+
+
+df_bl %>%
+      filter(., Year==year) %>%
+      ggplot (.,aes(x=GDPp, y=med_units , color = Location)) +
+      geom_point(colour="#C0C0C0",size = 8) +
+      geom_point(data=selected_bl,colour="#000099",size = 8)+
+      theme(legend.position="none")+
+      ylab("Total units [1M habitants]")+
+      xlab("Health expenditure [%GDP]")      
 
 
 

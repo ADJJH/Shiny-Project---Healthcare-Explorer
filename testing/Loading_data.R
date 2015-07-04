@@ -82,4 +82,28 @@ saveRDS(life_exp, file="Shiny Project/Prohect-Shiny/data/life_exp.rds")
 saveRDS(population, file="Shiny Project/Prohect-Shiny/data/population.rds")
 
 
+#************** bottom left **************************************************
+spending = read.csv("Shiny Project/Prohect-Shiny/Sources/HEALTHEXP-TOT-PC_GDP-60_13.csv",
+                      skip = 8, header=TRUE, check.names=FALSE )[ ,1:55]
+
+spending = melt(spending,id = 'Location')
+colnames(spending) = c("Location","Year", "GDPp")
+
+
+mri = read.csv("Shiny Project/Prohect-Shiny/Sources/MRIUNITS-TOT-82_13.csv",
+                    skip = 8, header=TRUE, check.names=FALSE )[ ,1:33]
+mri = melt(mri,id = 'Location')
+colnames(mri) = c("Location","Year", "med_units")
+
+ct = read.csv("Shiny Project/Prohect-Shiny/Sources/CTSCANNER-TOT-1000000HAB_80-13.csv",
+               skip = 8, header=TRUE, check.names=FALSE )[ ,1:35]
+ct = melt(ct,id = 'Location')
+colnames(ct) = c("Location","Year", "med_units")
+
+saveRDS(spending, file="Shiny Project/Prohect-Shiny/data/spending.rds")
+saveRDS(mri, file="Shiny Project/Prohect-Shiny/data/mri.rds")
+saveRDS(ct, file="Shiny Project/Prohect-Shiny/data/ct.rds")
+
+
+
 
