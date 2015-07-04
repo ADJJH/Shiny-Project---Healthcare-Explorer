@@ -1,5 +1,5 @@
 
-plot_UL = function (min = 1960, max = 2011, df1,df2,country){
+plot_UL = function (min = 1960, max = 2013, df1,df2,country){
 
       docs_consul=df1
       remuneration = df2
@@ -27,7 +27,7 @@ plot_UL = function (min = 1960, max = 2011, df1,df2,country){
 }
 
 
-plot_UR = function (min = 1960, max = 2011, beds,hosp_stay,country){
+plot_UR = function (min = 1960, max = 2013, beds,hosp_stay,country){
       
       
       beds$beds_nmr = as.numeric(as.character(beds$beds_nmr))
@@ -53,7 +53,7 @@ plot_UR = function (min = 1960, max = 2011, beds,hosp_stay,country){
             
 }
       
-plot_BR = function (min = 1960, max = 2011, population,life_exp,country){      
+plot_BR = function (min = 1960, max = 2013, population,life_exp,country){      
 
       population$habitants = as.numeric(as.character(population$habitants))
       population$Year = as.integer(as.character(population$Year))
@@ -79,3 +79,36 @@ plot_BR = function (min = 1960, max = 2011, population,life_exp,country){
       return(plot_br)
       
 }
+
+
+
+plot_BL = function (min = 1960, max = 2013, spending,med_units){ 
+
+
+spending$GDPp = as.numeric(as.character(spending$GDPp))
+spending$Year = as.integer(as.character(spending$Year))
+med_units$Year = as.integer(as.character(med_units$Year))
+med_units$med_units = as.integer(as.character(med_units$med_units))
+
+df_bl = inner_join(spending,med_units,by=c("Location", "Year"))
+
+
+selected_bl=filter(df_bl,Location== country, Year==year)
+
+
+df_bl %>%
+      filter(., Year==year) %>%
+      ggplot (.,aes(x=GDPp, y=med_units , color = Location)) +
+      geom_point(colour="#C0C0C0",size = 8) +
+      geom_point(data=selected_bl,colour="#000099",size = 8)+
+      theme(legend.position="none")+
+      ylab("Total units [1M habitants]")+
+      xlab("Health expenditure [%GDP]")      
+
+
+return(plot_bl)
+
+}
+
+
+

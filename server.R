@@ -8,6 +8,9 @@ beds <- readRDS("data/beds.rds")
 hosp_stay <- readRDS("data/hosp_stay.rds")
 population <- readRDS("data/population.rds")
 life_exp <- readRDS("data/life_exp.rds")
+spending <- readRDS("data/spending.rds")
+mri <- readRDS("data/mri.rds")
+ct <- readRDS("data/ct.rds")
 
 
 source("helpers.R")
@@ -47,8 +50,17 @@ shinyServer(
                   args_br$life_exp <- life_exp
                   args_br$country <- input$country[1]
                   br <- do.call(plot_BR,args_br)
+
+                  #BL
+                  args_bl=list()
+                  args_bl$min <- input$year[1]
+                  args_bl$max <- input$year[2]
+                  args_bl$spending <- spending
+                  args_bl$mri <- mri
+                  args_bl$country <- input$country[1]
+                  bl <- do.call(plot_BL,args_bl)
                   
-                  multiplot(ul,ul,ur,br,cols=2)
+                  multiplot(ul,bl,ur,br,cols=2)
                    
             })
       }
