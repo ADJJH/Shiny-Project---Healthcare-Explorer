@@ -50,10 +50,32 @@ plot_UR = function (min = 1960, max = 2011, beds,hosp_stay,country){
                         xlab("Length of stay [days]")     
       
       return (plot_ur)      
-      
+            
 }
       
+plot_BR = function (min = 1960, max = 2011, population,life_exp,country){      
+
+      population$habitants = as.numeric(as.character(population$habitants))
+      population$Year = as.integer(as.character(population$Year))
+      life_exp$Year = as.integer(as.character(life_exp$Year))
+      life_exp$exp_years = as.integer(as.character(life_exp$exp_years))
       
-
-
-
+      df_br = inner_join(population,life_exp,by=c("Location", "Year"))
+      
+      
+      year = max
+      selected_br=filter(df_br,Location== country, Year==year)
+     
+      
+      plot_br<-df_br %>%
+                  filter(., Year==year) %>%
+                        ggplot (.,aes(x=habitants, y=exp_years , color = Location)) +
+                        geom_point(colour="#C0C0C0",size = 8) +
+                        geom_point(data=selected_br,colour="#000099",size = 8)+
+                        theme(legend.position="none")+
+                        ylab("Life expectancy [years]")+
+                        xlab("Total population [Mill habitants]")      
+      
+      return(plot_br)
+      
+}

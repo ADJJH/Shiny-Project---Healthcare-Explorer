@@ -48,16 +48,56 @@ df_ur = inner_join(beds,hosp_stay,by=c("Location", "Year"))
 
 
 country_var = "Spain"
-selected_ur=filter(df_ur,Location== country_var)
+selected_ur=filter(df_ur,Location== country_var, Year==year)
 year = 2011
 
 ggplot (df_ur(Year== year),aes(x= nmr_days, y=beds_nmr , color = Location)) +
       geom_point(colour="#C0C0C0",size = 8) +
       geom_point(data=selected_ur,colour="#000099",size = 8)+
       theme(legend.position="none")+
-      ylab("Total beds [per 1k inhabitants]")
+      ylab("Total beds [per 1k inhabitants]")+
       xlab("Length of stay [days]")
 
+
+df_ur %>%
+      filter(., Year==year) %>%
+            ggplot (.,aes(x= nmr_days, y=beds_nmr , color = Location)) +
+            geom_point(colour="#C0C0C0",size = 8) +
+            geom_point(data=selected_ur,colour="#000099",size = 8)+
+            theme(legend.position="none")+
+            ylab("Total beds [per 1k inhabitants]")+
+            xlab("Length of stay [days]")      
+
+
+#************************* Bottom right ***********************************
+
+
+population <- readRDS("Shiny Project/Prohect-Shiny/data/population.rds")
+life_exp <- readRDS("Shiny Project/Prohect-Shiny/data/life_exp.rds")
+
+population$habitants = as.numeric(as.character(population$habitants))
+population$Year = as.integer(as.character(population$Year))
+life_exp$Year = as.integer(as.character(life_exp$Year))
+life_exp$exp_years = as.integer(as.character(life_exp$exp_years))
+
+df_br = inner_join(population,life_exp,by=c("Location", "Year"))
+
+
+country_var = "Austria"
+selected_br=filter(df_br,Location== country_var, Year==year)
+year = 2011
+
+df_br %>%
+      filter(., Year==year) %>%
+      ggplot (.,aes(x=habitants, y=exp_years , color = Location)) +
+      geom_point(colour="#C0C0C0",size = 8) +
+      geom_point(data=selected_br,colour="#000099",size = 8)+
+      theme(legend.position="none")+
+      ylab("Life expectancy [years]")+
+      xlab("Total population [Mill habitants]")      
+
+
+#********************************* bottom left *******************************
 
 
 

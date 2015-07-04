@@ -56,7 +56,7 @@ shinyUI(
                         #textInput(inputId, label, value = "", ...)
                         sliderInput("year",  # choose the range
                                     label = "Years",
-                                    min = 2000, max = 2013, value = c(2000, 2013)
+                                    min = 2000, max = 2011, value = c(2000, 2011)
                         )
                   ),
                        

@@ -62,8 +62,24 @@ saveRDS(hosp_stay, file="Shiny Project/Prohect-Shiny/data/hosp_stay.rds")
 
 
 
+#********************************** bottom_right **********************************
+
+##### Importing data 
+population = read.csv("Shiny Project/Prohect-Shiny/Sources/POP-TOT-MLN_PER_1960_2014.csv",
+                skip = 8, header=TRUE, check.names=FALSE )[ ,1:55]
+
+population = melt(population,id = 'Location')
+colnames(population) = c("Location","Year", "habitants")
 
 
+life_exp = read.csv("Shiny Project/Prohect-Shiny/Sources/LIFEEXP-TOT-1960-2013.csv",
+                     skip = 8, header=TRUE, check.names=FALSE )[ ,1:55]
+life_exp = melt(life_exp,id = 'Location')
+colnames(life_exp) = c("Location","Year", "exp_years")
+
+
+saveRDS(life_exp, file="Shiny Project/Prohect-Shiny/data/life_exp.rds")
+saveRDS(population, file="Shiny Project/Prohect-Shiny/data/population.rds")
 
 
 
