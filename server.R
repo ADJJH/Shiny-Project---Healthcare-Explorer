@@ -56,7 +56,7 @@ shinyServer(
                   args_bl$min <- input$year[1]
                   args_bl$max <- input$year[2]
                   args_bl$spending <- spending
-                  args_bl$mri <- mri
+                  args_bl$med_units <- mri
                   args_bl$country <- input$country[1]
                   bl <- do.call(plot_BL,args_bl)
                   
