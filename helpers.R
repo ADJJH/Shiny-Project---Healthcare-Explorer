@@ -22,8 +22,9 @@ plot_UL = function (min = 1960, max = 2013, df1,df2,country){
                   theme(legend.position="none") +
                   ylab("# Consultations [per day]") +
                   xlab ('Ratio of remuneration')
+      
       df_ul<-df_ul[complete.cases(df_ul),c("Location","Nmr_consult","Salary")]
-      saveRDS(df_ul, file="data/df_ul_test.rds")     
+           
 
       return(list(plot_ul,df_ul))
 }
@@ -41,6 +42,8 @@ plot_UR = function (min = 1960, max = 2013, beds,hosp_stay,country){
       df_ur = inner_join(beds,hosp_stay,by=c("Location", "Year"))
       selected_ur=filter(df_ur,Location== country, Year==year)
       
+      #df_ul<-df_ul[complete.cases(df_ul),c("Location","Nmr_consult","Salary")]
+      
       
       plot_ur<- df_ur %>%
                   filter(., Year==year) %>%
@@ -50,6 +53,10 @@ plot_UR = function (min = 1960, max = 2013, beds,hosp_stay,country){
                         theme(legend.position="none")+
                         ylab("Total beds [per 1k inhabitants]")+
                         xlab("Length of stay [days]")     
+      
+      df_ur<-filter(df_ur, Year==year)
+      df_ur<-df_ur[complete.cases(df_ur),c("Location","nmr_days","beds_nmr")]
+      
       
       return(list(plot_ur,df_ur))     
             
@@ -67,6 +74,7 @@ plot_BR = function (min = 1960, max = 2013, population,life_exp,country){
       
       year = max
       selected_br=filter(df_br,Location== country, Year==year)
+      
      
       
       plot_br<-df_br %>%
@@ -78,7 +86,10 @@ plot_BR = function (min = 1960, max = 2013, population,life_exp,country){
                         ylab("Life expectancy [years]")+
                         xlab("Total population [Mill habitants]")      
       
-      return(plot_br)
+      df_br<-filter(df_br, Year==year)
+      df_br<-df_br[complete.cases(df_br),c("Location","habitants","exp_years")]
+      
+      return(list(plot_br,df_br))  
       
 }
 
@@ -87,29 +98,31 @@ plot_BR = function (min = 1960, max = 2013, population,life_exp,country){
 plot_BL = function (min = 1960, max = 2013, spending,med_units,country){ 
 
 
-spending$GDPp = as.numeric(as.character(spending$GDPp))
-spending$Year = as.integer(as.character(spending$Year))
-med_units$Year = as.integer(as.character(med_units$Year))
-med_units$med_units = as.integer(as.character(med_units$med_units))
-
-year=max
-df_bl = inner_join(spending,med_units,by=c("Location", "Year"))
-
-
-selected_bl=filter(df_bl,Location== country, Year==year)
-
-
-plot_bl<-df_bl %>%
-            filter(., Year==year) %>%
-                  ggplot (.,aes(x=GDPp, y=med_units , color = Location)) +
-                  geom_point(colour="#C0C0C0",size = 8) +
-                  geom_point(data=selected_bl,colour="#000099",size = 8)+
-                  theme(legend.position="none")+
-                  ylab("Total units [1M habitants]")+
-                  xlab("Health expenditure [%GDP]")      
-
-
-return(plot_bl)
+      spending$GDPp = as.numeric(as.character(spending$GDPp))
+      spending$Year = as.integer(as.character(spending$Year))
+      med_units$Year = as.integer(as.character(med_units$Year))
+      med_units$med_units = as.integer(as.character(med_units$med_units))
+      
+      year=max
+      df_bl = inner_join(spending,med_units,by=c("Location", "Year"))
+      
+      
+      selected_bl=filter(df_bl,Location== country, Year==year)
+      
+      
+      plot_bl<-df_bl %>%
+                  filter(., Year==year) %>%
+                        ggplot (.,aes(x=GDPp, y=med_units , color = Location)) +
+                        geom_point(colour="#C0C0C0",size = 8) +
+                        geom_point(data=selected_bl,colour="#000099",size = 8)+
+                        theme(legend.position="none")+
+                        ylab("Total units [1M habitants]")+
+                        xlab("Health expenditure [%GDP]")      
+      
+      df_bl<-filter(df_bl, Year==year)
+      df_bl<-df_bl[complete.cases(df_bl),c("Location","GDPp","med_units")]
+      
+      return(list(plot_bl,df_bl)) 
 
 }
 

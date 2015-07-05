@@ -52,7 +52,6 @@ shinyServer(
                   args$country <- input$country[1]
                   ul <- do.call(plot_UL,args)
                   
-                  #brushedPoints(df_ul_test, input$plot_ul_brush,allRows = FALSE)
                   brushedPoints(ul[[2]], input$plot_ul_brush,allRows = FALSE)
             })
             
