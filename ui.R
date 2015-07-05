@@ -37,46 +37,7 @@ countries_oecd = c("",
                    'United States'
 )
 
-# shinyUI(
-#       
-#       fluidPage(
-#             titlePanel("An overview on healthcare systems"),   # main title
-#       
-#             sidebarLayout(
-#                  
-#                   sidebarPanel(
-#                         helpText("Comparison among countries "),      
-#                         selectInput("country",  
-#                                     label = "Choose a country to highlight",
-#                                     choices = countries_oecd,
-#                                     selected = NULL
-#                                     
-#                         ),
-#                                                 
-#                         
-#                         sliderInput("year",  
-#                                     label = "Years",
-#                                     min = 2000, max = 2011, value = c(2000, 2011)
-#                         ),
-#                         
-#                         radioButtons("radio", label = "Medical devices",
-#                                      choices = list("MRI" = "mri", "CT" = "ct"),
-#                                      selected = "mri")
-#                   ),
-#                        
-#                   mainPanel(
-#                               textOutput("text1"),
-#                               plotOutput("plot_ALL")
-#                             
-#                             
-#                   )
-#             
-#             )
-#       )
-# )
 
-
-      
 
 
 shinyUI(fluidPage(
@@ -86,7 +47,7 @@ shinyUI(fluidPage(
                    fluidRow(
                         
                               column(6, 
-                                    "Plot UR",
+                                    "Plot UR (only 2011 data available)",
                                     #plotOutput("plot_ALL_UL")
                                     
                                     plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot_ul_brush")),#hover = "plot_hover"), #hover = "plot_hover",

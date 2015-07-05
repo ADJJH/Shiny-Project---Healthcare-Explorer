@@ -12,14 +12,9 @@ spending <- readRDS("data/spending.rds")
 mri <- readRDS("data/mri.rds")
 ct <- readRDS("data/ct.rds")
 
-df_test <- readRDS("data/df_ul_test.rds")
-testing <- df_test[complete.cases(df_test),c("Location","Nmr_consult","Salary")]
-mtcars2 <- mtcars[, c("mpg", "cyl", "disp", "hp", "wt", "am", "gear")]
 
 source("helpers.R")
 source("multiplot.R")
-# 
-# 
 
 
 shinyServer(
@@ -79,106 +74,64 @@ shinyServer(
                   brushedPoints(ur[[2]], input$plot_ur_brush,allRows = FALSE)
             })
 
-      #******** BL *************#
-      output$plot_ALL_BL <- renderPlot({      
-                        args_bl=list()
-                        args_bl$min <- input$year[1]
-                        args_bl$max <- input$year[2]
-                        args_bl$spending <- spending
-                        args_bl$med_units <-  switch(input$radio,
-                                                      "mri" = mri,
-                                                      "ct" = ct,
-                                                )
-                        args_bl$country <- input$country[1]
-                        bl <- do.call(plot_BL,args_bl)
-            #                   
-            bl[[1]]
-      })
-      
-      output$info_bl <- renderPrint({     
-            args_bl=list()
-            args_bl$min <- input$year[1]
-            args_bl$max <- input$year[2]
-            args_bl$spending <- spending
-            args_bl$med_units <-  switch(input$radio,
-                                         "mri" = mri,
-                                         "ct" = ct,
-                                    )
-            args_bl$country <- input$country[1]
-            bl <- do.call(plot_BL,args_bl)
+            #******** BL *************#
+            output$plot_ALL_BL <- renderPlot({      
+                              args_bl=list()
+                              args_bl$min <- input$year[1]
+                              args_bl$max <- input$year[2]
+                              args_bl$spending <- spending
+                              args_bl$med_units <-  switch(input$radio,
+                                                            "mri" = mri,
+                                                            "ct" = ct,
+                                                      )
+                              args_bl$country <- input$country[1]
+                              bl <- do.call(plot_BL,args_bl)
+                  #                   
+                  bl[[1]]
+            })
             
-            brushedPoints(bl[[2]], input$plot_bl_brush,allRows = FALSE)
-      })
-      
-      #******** BR *************#
-      output$plot_ALL_BR <- renderPlot({      
-            args_br=list()
-            args_br$min <- input$year[1]
-            args_br$max <- input$year[2]
-            args_br$population <- population
-            args_br$life_exp <- life_exp
-            args_br$country <- input$country[1]
-            br <- do.call(plot_BR,args_br)
-            #                   
-            br[[1]]
-      })
-      
-      output$info_br <- renderPrint({     
-            args_br=list()
-            args_br$min <- input$year[1]
-            args_br$max <- input$year[2]
-            args_br$population <- population
-            args_br$life_exp <- life_exp
-            args_br$country <- input$country[1]
-            br <- do.call(plot_BR,args_br)
+            output$info_bl <- renderPrint({     
+                  args_bl=list()
+                  args_bl$min <- input$year[1]
+                  args_bl$max <- input$year[2]
+                  args_bl$spending <- spending
+                  args_bl$med_units <-  switch(input$radio,
+                                               "mri" = mri,
+                                               "ct" = ct,
+                                          )
+                  args_bl$country <- input$country[1]
+                  bl <- do.call(plot_BL,args_bl)
+                  
+                  brushedPoints(bl[[2]], input$plot_bl_brush,allRows = FALSE)
+            })
             
-            brushedPoints(br[[2]], input$plot_br_brush,allRows = FALSE)
-      })
-      
+            #******** BR *************#
+            output$plot_ALL_BR <- renderPlot({      
+                  args_br=list()
+                  args_br$min <- input$year[1]
+                  args_br$max <- input$year[2]
+                  args_br$population <- population
+                  args_br$life_exp <- life_exp
+                  args_br$country <- input$country[1]
+                  br <- do.call(plot_BR,args_br)
+                  #                   
+                  br[[1]]
+            })
+            
+            output$info_br <- renderPrint({     
+                  args_br=list()
+                  args_br$min <- input$year[1]
+                  args_br$max <- input$year[2]
+                  args_br$population <- population
+                  args_br$life_exp <- life_exp
+                  args_br$country <- input$country[1]
+                  br <- do.call(plot_BR,args_br)
+                  
+                  brushedPoints(br[[2]], input$plot_br_brush,allRows = FALSE)
+            })
+            
 
             
-#             output$plot_ALL <- renderPlot({
-#                   #UL
-#                   args=list()
-#                   args$min <- input$year[1]
-#                   args$max <- input$year[2]
-#                   args$df1 <- docs_consul
-#                   args$df2 <- remuneration
-#                   args$country <- input$country[1]
-#                   ul <- do.call(plot_UL,args)
-#                   
-#                   #UR
-#                   args_ur=list()
-#                   args_ur$min <- input$year[1]
-#                   args_ur$max <- input$year[2]
-#                   args_ur$beds <- beds
-#                   args_ur$hosp_stay <- hosp_stay
-#                   args_ur$country <- input$country[1]
-#                   ur <- do.call(plot_UR,args_ur)
-#                   
-# #                   #BR
-#                   args_br=list()
-#                   args_br$min <- input$year[1]
-#                   args_br$max <- input$year[2]
-#                   args_br$population <- population
-#                   args_br$life_exp <- life_exp
-#                   args_br$country <- input$country[1]
-#                   br <- do.call(plot_BR,args_br)
-# 
-#                   #BL
-#                   args_bl=list()
-#                   args_bl$min <- input$year[1]
-#                   args_bl$max <- input$year[2]
-#                   args_bl$spending <- spending
-#                   args_bl$med_units <-  switch(input$radio,
-#                                                "mri" = mri,
-#                                                "ct" = ct,
-#                                                )
-#                   args_bl$country <- input$country[1]
-#                   bl <- do.call(plot_BL,args_bl)
-#                   
-#                   multiplot(ul,bl,ur,br,cols=2)
-#                    
-#             })
+
       }
 )
