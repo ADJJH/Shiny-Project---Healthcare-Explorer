@@ -45,7 +45,7 @@ shinyUI(
             sidebarLayout(
                  
                   sidebarPanel(
-                        helpText("Comparison among countries "), ## subtitle      
+                        helpText("Comparison among countries "),      
                         selectInput("country",  
                                     label = "Choose a country to highlight",
                                     choices = countries_oecd,
@@ -53,11 +53,15 @@ shinyUI(
                                     
                         ),
                                                 
-                        #textInput(inputId, label, value = "", ...)
-                        sliderInput("year",  # choose the range
+                        
+                        sliderInput("year",  
                                     label = "Years",
                                     min = 2000, max = 2011, value = c(2000, 2011)
-                        )
+                        ),
+                        
+                        radioButtons("radio", label = "Medical devices",
+                                     choices = list("MRI" = "mri", "CT" = "ct"),
+                                     selected = "mri")
                   ),
                        
                   mainPanel(
