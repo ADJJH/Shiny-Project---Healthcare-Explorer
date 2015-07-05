@@ -60,9 +60,6 @@ shinyServer(
                                                "mri" = mri,
                                                "ct" = ct,
                                                )
-
-
-
                   args_bl$country <- input$country[1]
                   bl <- do.call(plot_BL,args_bl)
                   

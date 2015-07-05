@@ -37,40 +37,110 @@ countries_oecd = c("",
                    'United States'
 )
 
-shinyUI(
+# shinyUI(
+#       
+#       fluidPage(
+#             titlePanel("An overview on healthcare systems"),   # main title
+#       
+#             sidebarLayout(
+#                  
+#                   sidebarPanel(
+#                         helpText("Comparison among countries "),      
+#                         selectInput("country",  
+#                                     label = "Choose a country to highlight",
+#                                     choices = countries_oecd,
+#                                     selected = NULL
+#                                     
+#                         ),
+#                                                 
+#                         
+#                         sliderInput("year",  
+#                                     label = "Years",
+#                                     min = 2000, max = 2011, value = c(2000, 2011)
+#                         ),
+#                         
+#                         radioButtons("radio", label = "Medical devices",
+#                                      choices = list("MRI" = "mri", "CT" = "ct"),
+#                                      selected = "mri")
+#                   ),
+#                        
+#                   mainPanel(
+#                               textOutput("text1"),
+#                               plotOutput("plot_ALL")
+#                             
+#                             
+#                   )
+#             
+#             )
+#       )
+# )
+
+
       
-      fluidPage(
-            titlePanel("An overview on healthcare systems"),   # main title
-      
-            sidebarLayout(
-                 
-                  sidebarPanel(
-                        helpText("Comparison among countries "),      
-                        selectInput("country",  
-                                    label = "Choose a country to highlight",
-                                    choices = countries_oecd,
-                                    selected = NULL
-                                    
-                        ),
-                                                
+
+
+shinyUI(fluidPage(
+      fluidRow(
+            column(10,
+                   "All plots",
+                   fluidRow(
                         
-                        sliderInput("year",  
-                                    label = "Years",
-                                    min = 2000, max = 2011, value = c(2000, 2011)
-                        ),
-                        
-                        radioButtons("radio", label = "Medical devices",
-                                     choices = list("MRI" = "mri", "CT" = "ct"),
-                                     selected = "mri")
-                  ),
-                       
-                  mainPanel(
-                              textOutput("text1"),
-                              plotOutput("plot_ALL")
-                            
-                            
+                              column(6, 
+                                    "Fluid 6"),
+                              column(6,
+                                    "Fluid 6")
+                                
+                         
+                   ),
+                   
+                   fluidRow(
+                         
+                               column(6, 
+                                      "Fluid 6"),
+                               column(6,
+                                      "Fluid 6")
+                         
                   )
+                   
+                   
+            ),
+            
+            
+            
+            column(2,
+                  
+                   helpText("Comparison among countries "),      
+                   selectInput("country",  
+                               label = "Choose a country to highlight",
+                               choices = countries_oecd,
+                               selected = NULL
+                               
+                   ),
+                   
+                   
+                   sliderInput("year",  
+                               label = "Years",
+                               min = 2000, max = 2011, value = c(2000, 2011)
+                   ),
+                   
+                   radioButtons("radio", label = "Medical devices",
+                                choices = list("MRI" = "mri", "CT" = "ct"),
+                                selected = "mri"
+                  ) 
             
             )
       )
-)
+))
+
+
+
+
+
+
+
+
+
+
+
+
+
