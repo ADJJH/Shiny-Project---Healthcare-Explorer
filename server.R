@@ -79,20 +79,62 @@ shinyServer(
                   brushedPoints(ur[[2]], input$plot_ur_brush,allRows = FALSE)
             })
 
-############test
-
-output$plot1 <- renderPlot({
+      #******** BL *************#
+      output$plot_ALL_BL <- renderPlot({      
+                        args_bl=list()
+                        args_bl$min <- input$year[1]
+                        args_bl$max <- input$year[2]
+                        args_bl$spending <- spending
+                        args_bl$med_units <-  switch(input$radio,
+                                                      "mri" = mri,
+                                                      "ct" = ct,
+                                                )
+                        args_bl$country <- input$country[1]
+                        bl <- do.call(plot_BL,args_bl)
+            #                   
+            bl[[1]]
+      })
       
+      output$info_bl <- renderPrint({     
+            args_bl=list()
+            args_bl$min <- input$year[1]
+            args_bl$max <- input$year[2]
+            args_bl$spending <- spending
+            args_bl$med_units <-  switch(input$radio,
+                                         "mri" = mri,
+                                         "ct" = ct,
+                                    )
+            args_bl$country <- input$country[1]
+            bl <- do.call(plot_BL,args_bl)
+            
+            brushedPoints(bl[[2]], input$plot_bl_brush,allRows = FALSE)
+      })
       
-      ggplot(testing, aes(Nmr_consult, Salary)) + geom_point()
-           
-})
-
-output$brush_info <- renderPrint({
-      brushedPoints(testing, input$plot1_brush)
-})
-
-##########333333333
+      #******** BR *************#
+      output$plot_ALL_BR <- renderPlot({      
+            args_br=list()
+            args_br$min <- input$year[1]
+            args_br$max <- input$year[2]
+            args_br$population <- population
+            args_br$life_exp <- life_exp
+            args_br$country <- input$country[1]
+            br <- do.call(plot_BR,args_br)
+            #                   
+            br[[1]]
+      })
+      
+      output$info_br <- renderPrint({     
+            args_br=list()
+            args_br$min <- input$year[1]
+            args_br$max <- input$year[2]
+            args_br$population <- population
+            args_br$life_exp <- life_exp
+            args_br$country <- input$country[1]
+            br <- do.call(plot_BR,args_br)
+            
+            brushedPoints(br[[2]], input$plot_br_brush,allRows = FALSE)
+      })
+      
 
             
 #             output$plot_ALL <- renderPlot({

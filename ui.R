@@ -86,7 +86,7 @@ shinyUI(fluidPage(
                    fluidRow(
                         
                               column(6, 
-                                    "Fluid 6",
+                                    "Plot UR",
                                     #plotOutput("plot_ALL_UL")
                                     
                                     plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot_ul_brush")),#hover = "plot_hover"), #hover = "plot_hover",
@@ -97,7 +97,7 @@ shinyUI(fluidPage(
                               ),
                               
                               column(6,
-                                    "Fluid 6",
+                                    "Plot UL",
                                     
                                     plotOutput("plot_ALL_UR",  brush = brushOpts(id = "plot_ur_brush")),#hover = "plot_hover"), #hover = "plot_hover",
                                     verbatimTextOutput("info_ur")
@@ -110,14 +110,17 @@ shinyUI(fluidPage(
                    fluidRow(
                          
                                column(6, 
-                                      "Fluid 6",
+                                      "Plot BL",
                                       
-                                      plotOutput("plot1",  brush = brushOpts(id = "plot1_brush")),
-                                      verbatimTextOutput("brush_info")
+                                      plotOutput("plot_ALL_BL",  brush = brushOpts(id = "plot_bl_brush")),
+                                      verbatimTextOutput("info_bl")
                               ),
                               
                               column(6,
-                                      "Fluid 6"
+                                      "Plot BR",
+                                     
+                                     plotOutput("plot_ALL_BR",  brush = brushOpts(id = "plot_br_brush")),
+                                     verbatimTextOutput("info_br")
                               )
                          
                   )
