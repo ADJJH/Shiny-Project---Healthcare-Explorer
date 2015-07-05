@@ -43,7 +43,7 @@ countries_oecd = c("",
 shinyUI(fluidPage(
       fluidRow(
             column(10,
-                   "All plots",
+                   h3("Healthcare explorer"),
                    fluidRow(
                         
                               column(6, 
