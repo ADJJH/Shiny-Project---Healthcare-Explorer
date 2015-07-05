@@ -87,7 +87,13 @@ shinyUI(fluidPage(
                         
                               column(6, 
                                     "Fluid 6",
-                                    plotOutput("plot_ALL_UL")
+                                    #plotOutput("plot_ALL_UL")
+                                    
+                                    plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot1_brush"),hover = "plot_hover"), #hover = "plot_hover",
+                                    verbatimTextOutput("info"),
+                                    verbatimTextOutput("info_hover")
+                                    
+                                    
                                     ),
                               column(6,
                                     "Fluid 6")

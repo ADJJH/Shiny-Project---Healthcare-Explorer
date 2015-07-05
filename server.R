@@ -31,8 +31,28 @@ shinyServer(
                   args$df1 <- docs_consul
                   args$df2 <- remuneration
                   args$country <- input$country[1]
-                  do.call(plot_UL,args)
+                  x<-do.call(plot_UL,args)
+                  x[[1]]
             })
+            
+            
+            output$info_hover <- renderText({
+                  paste0("x=", input$plot_hover$x, "\ny=", input$plot_hover$y)
+            })      
+            
+            output$info <- renderPrint({
+                  args=list()
+                  args$min <- input$year[1]
+                  args$max <- input$year[2]
+                  args$df1 <- docs_consul
+                  args$df2 <- remuneration
+                  args$country <- input$country[1]
+                  x <- do.call(plot_UL,args)
+                  
+                  brushedPoints(x[[2]], input$plot1_brush)
+            })
+            
+            
             
             
 #             output$plot_ALL <- renderPlot({
