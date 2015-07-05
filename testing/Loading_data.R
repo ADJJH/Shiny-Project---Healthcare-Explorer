@@ -104,6 +104,27 @@ saveRDS(spending, file="Shiny Project/Prohect-Shiny/data/spending.rds")
 saveRDS(mri, file="Shiny Project/Prohect-Shiny/data/mri.rds")
 saveRDS(ct, file="Shiny Project/Prohect-Shiny/data/ct.rds")
 
+####################################################################
+#******************** Second tab **********************************
+
+#************* doctors and nurses
+
+nurses = read.csv("Shiny Project/Prohect-Shiny/Sources/NURSE-TOT-1000HAB_60_13.csv",
+                    skip = 8, header=TRUE, check.names=FALSE ,stringsAsFactors=FALSE)[ ,1:36]
+nurses = melt(nurses,id = 'Location')
+colnames(nurses) = c("Location","Year", "professionals")
+nurses = mutate(nurses,type="Nurse")
+
+
+docs = read.csv("Shiny Project/Prohect-Shiny/Sources/MEDICALDOC-TOT-1000HAB_60_13.csv",
+                  skip = 8, header=TRUE, check.names=FALSE,stringsAsFactors=FALSE )[ ,1:55]
+docs = melt(docs,id = 'Location')
+colnames(docs) = c("Location","Year", "professionals")
+docs = mutate(docs,type="Doctor")
+
+
+professionals= rbind(nurses,docs)
+saveRDS(professionals, file="Shiny Project/Prohect-Shiny/data/professionals.rds")
 
 
 

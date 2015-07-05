@@ -124,6 +124,35 @@ df_bl %>%
       ylab("Total units [1M habitants]")+
       xlab("Health expenditure [%GDP]")      
 
+#************************ Plotting second tab 
+#### Professionals
+
+
+
+professionals<- readRDS("Shiny Project/Prohect-Shiny/data/professionals.rds")
+professionals$type = as.factor(professionals$type)
+professionals$Year = as.integer(as.character(professionals$Year))
+
+country = "Austria"
+
+selected_prof=filter(professionals,Location== country)
+
+
+selected_prof %>%
+      
+      ggplot (.,aes(x=Year, y=professionals , color = type)) +
+      
+      geom_line(data=selected_prof)+
+      #theme(legend.position="none")+
+      ylab("Total professionals [Per 1000 inhabitants]")+
+      xlab("Year")      
+
+
+
+
+
+
+
 
 
 
