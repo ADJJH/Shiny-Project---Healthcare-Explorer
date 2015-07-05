@@ -22,6 +22,7 @@ plot_UL = function (min = 1960, max = 2013, df1,df2,country){
                   theme(legend.position="none") +
                   ylab("# Consultations [per day]") +
                   xlab ('Ratio of remuneration')
+      df_ul<-df_ul[complete.cases(df_ul),c("Location","Nmr_consult","Salary")]
       saveRDS(df_ul, file="data/df_ul_test.rds")     
 
       return(list(plot_ul,df_ul))
@@ -50,7 +51,7 @@ plot_UR = function (min = 1960, max = 2013, beds,hosp_stay,country){
                         ylab("Total beds [per 1k inhabitants]")+
                         xlab("Length of stay [days]")     
       
-      return (plot_ur)      
+      return(list(plot_ur,df_ur))     
             
 }
       

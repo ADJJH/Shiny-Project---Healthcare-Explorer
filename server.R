@@ -12,6 +12,9 @@ spending <- readRDS("data/spending.rds")
 mri <- readRDS("data/mri.rds")
 ct <- readRDS("data/ct.rds")
 
+df_test <- readRDS("data/df_ul_test.rds")
+testing <- df_test[complete.cases(df_test),c("Location","Nmr_consult","Salary")]
+mtcars2 <- mtcars[, c("mpg", "cyl", "disp", "hp", "wt", "am", "gear")]
 
 source("helpers.R")
 source("multiplot.R")
@@ -22,17 +25,17 @@ source("multiplot.R")
 shinyServer(
       function(input, output) {
             
-            
+            #******** UL *************#
             output$plot_ALL_UL <- renderPlot({
-                  #UL
+                  
                   args=list()
                   args$min <- input$year[1]
                   args$max <- input$year[2]
                   args$df1 <- docs_consul
                   args$df2 <- remuneration
                   args$country <- input$country[1]
-                  x<-do.call(plot_UL,args)
-                  x[[1]]
+                  ul<-do.call(plot_UL,args)
+                  ul[[1]]
             })
             
             
@@ -47,13 +50,51 @@ shinyServer(
                   args$df1 <- docs_consul
                   args$df2 <- remuneration
                   args$country <- input$country[1]
-                  x <- do.call(plot_UL,args)
+                  ul <- do.call(plot_UL,args)
                   
-                  brushedPoints(x[[2]], input$plot1_brush,allRows = FALSE)
+                  #brushedPoints(df_ul_test, input$plot_ul_brush,allRows = FALSE)
+                  brushedPoints(ul[[2]], input$plot_ul_brush,allRows = FALSE)
             })
             
-            
-            
+            #******** UR *************#
+            output$plot_ALL_UR <- renderPlot({      
+                  args_ur=list()
+                  args_ur$min <- input$year[1]
+                  args_ur$max <- input$year[2]
+                  args_ur$beds <- beds
+                  args_ur$hosp_stay <- hosp_stay
+                  args_ur$country <- input$country[1]
+                  ur <- do.call(plot_UR,args_ur)  
+                  ur[[1]]
+            })
+
+            output$info_ur <- renderPrint({
+                  args_ur=list()
+                  args_ur$min <- input$year[1]
+                  args_ur$max <- input$year[2]
+                  args_ur$beds <- beds
+                  args_ur$hosp_stay <- hosp_stay
+                  args_ur$country <- input$country[1]
+                  ur <- do.call(plot_UR,args_ur)  
+                 
+                  brushedPoints(ur[[2]], input$plot_ur_brush,allRows = FALSE)
+            })
+
+############test
+
+output$plot1 <- renderPlot({
+      
+      
+      ggplot(testing, aes(Nmr_consult, Salary)) + geom_point()
+           
+})
+
+output$brush_info <- renderPrint({
+      brushedPoints(testing, input$plot1_brush)
+})
+
+##########333333333
+
             
 #             output$plot_ALL <- renderPlot({
 #                   #UL

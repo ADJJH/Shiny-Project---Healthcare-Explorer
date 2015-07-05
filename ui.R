@@ -89,14 +89,20 @@ shinyUI(fluidPage(
                                     "Fluid 6",
                                     #plotOutput("plot_ALL_UL")
                                     
-                                    plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot1_brush")),#hover = "plot_hover"), #hover = "plot_hover",
+                                    plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot_ul_brush")),#hover = "plot_hover"), #hover = "plot_hover",
                                     verbatimTextOutput("info_ul")
                                     #verbatimTextOutput("info_hover")
                                     
                                     
-                                    ),
+                              ),
+                              
                               column(6,
-                                    "Fluid 6")
+                                    "Fluid 6",
+                                    
+                                    plotOutput("plot_ALL_UR",  brush = brushOpts(id = "plot_ur_brush")),#hover = "plot_hover"), #hover = "plot_hover",
+                                    verbatimTextOutput("info_ur")
+                                    
+                              )
                                 
                          
                    ),
@@ -104,9 +110,15 @@ shinyUI(fluidPage(
                    fluidRow(
                          
                                column(6, 
-                                      "Fluid 6"),
-                               column(6,
-                                      "Fluid 6")
+                                      "Fluid 6",
+                                      
+                                      plotOutput("plot1",  brush = brushOpts(id = "plot1_brush")),
+                                      verbatimTextOutput("brush_info")
+                              ),
+                              
+                              column(6,
+                                      "Fluid 6"
+                              )
                          
                   )
                    
