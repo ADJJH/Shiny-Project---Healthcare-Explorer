@@ -86,7 +86,9 @@ shinyUI(fluidPage(
                    fluidRow(
                         
                               column(6, 
-                                    "Fluid 6"),
+                                    "Fluid 6",
+                                    plotOutput("plot_ALL_UL")
+                                    ),
                               column(6,
                                     "Fluid 6")
                                 
