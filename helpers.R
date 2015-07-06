@@ -128,3 +128,23 @@ plot_BL = function (min = 1960, max = 2013, spending,med_units,country){
 
 
 
+plot_profs = function (min = 1960, max = 2013, professionals,country){ 
+     
+      
+      professionals$type = as.factor(professionals$type)
+      professionals$Year = as.integer(as.character(professionals$Year))
+            
+      
+      selected_prof=filter(professionals,Location == country)
+            
+      selected_prof %>%
+            
+            ggplot (.,aes(x=Year, y=professionals , color = type)) +
+            geom_line(data=selected_prof)+
+            ylab("Total professionals [Per 1000 inhabitants]")+
+            xlab("Year")      
+
+      
+}
+
+

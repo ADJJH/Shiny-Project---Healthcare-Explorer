@@ -11,10 +11,11 @@ life_exp <- readRDS("data/life_exp.rds")
 spending <- readRDS("data/spending.rds")
 mri <- readRDS("data/mri.rds")
 ct <- readRDS("data/ct.rds")
+professionals<- readRDS("data/professionals.rds")
 
 
 source("helpers.R")
-source("multiplot.R")
+#source("multiplot.R")
 
 
 shinyServer(
@@ -130,7 +131,17 @@ shinyServer(
                   brushedPoints(br[[2]], input$plot_br_brush,allRows = FALSE)
             })
             
-
+############### second tab ###############################
+            output$plot_profs <- renderPlot({      
+                  args_prof=list()
+                  args_prof$min <- input$year[1]
+                  args_prof$max <- input$year[2]
+                  args_prof$professionals <- professionals
+                  args_prof$country <- input$country2[1]
+                  do.call(plot_profs,args_prof)
+                                     
+                  
+            })
             
 
       }

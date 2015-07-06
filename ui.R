@@ -126,8 +126,32 @@ shinyUI(
             ),
       
       
-            tabPanel("Country"
-            
+            tabPanel("Country",
+                     fluidRow(
+                           column(10,
+                                  plotOutput("plot_profs")
+                              ),
+                     
+                           column(2,
+                                  
+                                  helpText("Comparison among countries "),      
+                                  selectInput("country2",  
+                                              label = "Choose a country to highlight",
+                                              choices = countries_oecd,
+                                              selected = NULL
+                                              
+                                  ),
+                                  
+                                  
+                                  sliderInput("year",  
+                                              label = "Years",
+                                              min = 2000, max = 2011, value = c(2000, 2011)
+                                  )
+                                  
+                                  
+                                  
+                              )
+                        )
                      
             ) 
       
