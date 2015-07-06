@@ -53,19 +53,18 @@ shinyUI(
                                     
                                           column(6, 
                                                 "Plot UR (only 2011 data available)",
-                                                #plotOutput("plot_ALL_UL")
                                                 
-                                                plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot_ul_brush")),#hover = "plot_hover"), #hover = "plot_hover",
+                                                plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot_ul_brush"),
+                                                           ,width="300px",height="300px"),
                                                 verbatimTextOutput("info_ul")
-                                                #verbatimTextOutput("info_hover")
-                                                
-                                                
+                                                                                                
                                           ),
                                           
                                           column(6,
                                                 "Plot UL",
                                                 
-                                                plotOutput("plot_ALL_UR",  brush = brushOpts(id = "plot_ur_brush")),#hover = "plot_hover"), #hover = "plot_hover",
+                                                plotOutput("plot_ALL_UR",  brush = brushOpts(id = "plot_ur_brush"),
+                                                           ,width="300px",height="300px"),
                                                 verbatimTextOutput("info_ur")
                                                 
                                           )
@@ -78,14 +77,16 @@ shinyUI(
                                            column(6, 
                                                   "Plot BL",
                                                   
-                                                  plotOutput("plot_ALL_BL",  brush = brushOpts(id = "plot_bl_brush")),
+                                                  plotOutput("plot_ALL_BL",  brush = brushOpts(id = "plot_bl_brush"),
+                                                             ,width="300px",height="300px"),
                                                   verbatimTextOutput("info_bl")
                                           ),
                                           
                                           column(6,
                                                   "Plot BR",
                                                  
-                                                 plotOutput("plot_ALL_BR",  brush = brushOpts(id = "plot_br_brush")),
+                                                 plotOutput("plot_ALL_BR",  brush = brushOpts(id = "plot_br_brush"),
+                                                            ,width="300px",height="300px"),
                                                  verbatimTextOutput("info_br")
                                           )
                                      
@@ -117,6 +118,8 @@ shinyUI(
                                             choices = list("MRI" = "mri", "CT" = "ct"),
                                             selected = "mri"
                               ) 
+                              
+                              #verbatimTextOutput("info_ul")
                         
                         )
                   )

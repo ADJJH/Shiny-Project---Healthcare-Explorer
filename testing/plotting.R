@@ -153,7 +153,9 @@ graduates$Year = as.integer(as.character(graduates$Year))
 
 country = "Austria"
 
-selected_prof=filter(graduates,Location== country)
+min=2005
+max=2010
+selected_prof=filter(graduates,Location == country & (Year>=min & Year<=max ))
 
 
 selected_prof %>%

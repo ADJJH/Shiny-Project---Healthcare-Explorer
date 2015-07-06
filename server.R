@@ -73,6 +73,7 @@ shinyServer(
                   ur <- do.call(plot_UR,args_ur)  
                  
                   brushedPoints(ur[[2]], input$plot_ur_brush,allRows = FALSE)
+                  #width = getOption("width")
             })
 
             #******** BL *************#
