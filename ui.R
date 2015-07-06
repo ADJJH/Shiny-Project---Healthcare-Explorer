@@ -37,11 +37,7 @@ countries_oecd = c("",
                    'United States'
 )
 
-# shinyUI(navbarPage("My Application",
-#                    tabPanel("Component 1"),
-#                    tabPanel("Component 2"),
-#                    tabPanel("Component 3")
-# ))
+
 
 
 shinyUI(
@@ -113,7 +109,8 @@ shinyUI(
                                
                                sliderInput("year",  
                                            label = "Years",
-                                           min = 2000, max = 2011, value = c(2000, 2011)
+                                           min = 2000, max = 2011, value = as.integer(c(1980, 2013)),
+                                           sep = "",round== TRUE, step=1
                                ),
                                
                                radioButtons("radio", label = "Medical devices",
@@ -125,7 +122,7 @@ shinyUI(
                   )
             ),
       
-      
+ #*********     Second panel **********
             tabPanel("Country",
                      fluidRow(
                            column(10,
@@ -144,9 +141,10 @@ shinyUI(
                                   ),
                                   
                                   
-                                  sliderInput("year",  
+                                  sliderInput("year2",  
                                               label = "Years",
-                                              min = 2000, max = 2011, value = c(2000, 2011)
+                                              min = 1980, max = 2013, value = as.integer(c(1980, 2013)),
+                                              sep = "",round== TRUE, step=1
                                   )
                                   
                                   

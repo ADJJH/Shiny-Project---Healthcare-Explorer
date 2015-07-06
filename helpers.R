@@ -128,14 +128,14 @@ plot_BL = function (min = 1960, max = 2013, spending,med_units,country){
 
 
 
-plot_profs = function (min = 1960, max = 2013, professionals,country){ 
+plot_profs = function (min = 1980, max = 2013, professionals,country){ 
      
       
       professionals$type = as.factor(professionals$type)
       professionals$Year = as.integer(as.character(professionals$Year))
             
       
-      selected_prof=filter(professionals,Location == country)
+      selected_prof=filter(professionals,Location == country & (Year>=min & Year<=max ))
             
       selected_prof %>%
             
@@ -148,12 +148,12 @@ plot_profs = function (min = 1960, max = 2013, professionals,country){
 
 
 
-plot_grads = function (min = 1960, max = 2013, graduates,country){ 
+plot_grads = function (min = 1980, max = 2013, graduates,country){ 
      
       graduates$type = as.factor(graduates$type)
       graduates$Year = as.integer(as.character(graduates$Year))
       
-      selected_grad=filter(graduates,Location== country)
+      selected_grad=filter(graduates,Location == country & (Year>=min & Year<=max ))
       
       
       selected_grad %>%

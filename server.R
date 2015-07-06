@@ -134,8 +134,8 @@ shinyServer(
 ############### second tab ###############################
             output$plot_profs <- renderPlot({      
                   args_prof=list()
-                  args_prof$min <- input$year[1]
-                  args_prof$max <- input$year[2]
+                  args_prof$min <- input$year2[1]
+                  args_prof$max <- input$year2[2]
                   args_prof$professionals <- professionals
                   args_prof$country <- input$country2[1]
                   do.call(plot_profs,args_prof)
@@ -143,8 +143,8 @@ shinyServer(
             
             output$plot_grads <- renderPlot({      
                   args_grad=list()
-                  args_grad$min <- input$year[1]
-                  args_grad$max <- input$year[2]
+                  args_grad$min <- input$year2[1]
+                  args_grad$max <- input$year2[2]
                   args_grad$graduates <- graduates
                   args_grad$country <- input$country2[1]
                   do.call(plot_grads,args_grad)
