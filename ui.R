@@ -129,7 +129,8 @@ shinyUI(
             tabPanel("Country",
                      fluidRow(
                            column(10,
-                                  plotOutput("plot_profs")
+                                  plotOutput("plot_profs"),
+                                  plotOutput("plot_grads")
                               ),
                      
                            column(2,

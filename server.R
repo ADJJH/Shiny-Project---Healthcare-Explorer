@@ -12,7 +12,7 @@ spending <- readRDS("data/spending.rds")
 mri <- readRDS("data/mri.rds")
 ct <- readRDS("data/ct.rds")
 professionals<- readRDS("data/professionals.rds")
-
+graduates<- readRDS("data/graduates.rds")
 
 source("helpers.R")
 #source("multiplot.R")
@@ -139,10 +139,16 @@ shinyServer(
                   args_prof$professionals <- professionals
                   args_prof$country <- input$country2[1]
                   do.call(plot_profs,args_prof)
-                                     
-                  
             })
             
+            output$plot_grads <- renderPlot({      
+                  args_grad=list()
+                  args_grad$min <- input$year[1]
+                  args_grad$max <- input$year[2]
+                  args_grad$graduates <- graduates
+                  args_grad$country <- input$country2[1]
+                  do.call(plot_grads,args_grad)
+            })
 
       }
 )

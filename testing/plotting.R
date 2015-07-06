@@ -127,8 +127,6 @@ df_bl %>%
 #************************ Plotting second tab 
 #### Professionals
 
-
-
 professionals<- readRDS("Shiny Project/Prohect-Shiny/data/professionals.rds")
 professionals$type = as.factor(professionals$type)
 professionals$Year = as.integer(as.character(professionals$Year))
@@ -147,9 +145,25 @@ selected_prof %>%
       ylab("Total professionals [Per 1000 inhabitants]")+
       xlab("Year")      
 
+##Graduates
+
+graduates<- readRDS("Shiny Project/Prohect-Shiny/data/graduates.rds")
+graduates$type = as.factor(graduates$type)
+graduates$Year = as.integer(as.character(graduates$Year))
+
+country = "Austria"
+
+selected_prof=filter(graduates,Location== country)
 
 
-
+selected_prof %>%
+      
+      ggplot (.,aes(x=Year, y=graduates , color = type)) +
+      
+      geom_line(data=selected_prof)+
+      #theme(legend.position="none")+
+      ylab("Total graduates [Per 1000 inhabitants]")+
+      xlab("Year")      
 
 
 

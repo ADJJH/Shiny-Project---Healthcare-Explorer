@@ -107,7 +107,7 @@ saveRDS(ct, file="Shiny Project/Prohect-Shiny/data/ct.rds")
 ####################################################################
 #******************** Second tab **********************************
 
-#************* doctors and nurses
+#************* doctors and nurses totals
 
 nurses = read.csv("Shiny Project/Prohect-Shiny/Sources/NURSE-TOT-1000HAB_60_13.csv",
                     skip = 8, header=TRUE, check.names=FALSE ,stringsAsFactors=FALSE)[ ,1:36]
@@ -126,5 +126,23 @@ docs = mutate(docs,type="Doctor")
 professionals= rbind(nurses,docs)
 saveRDS(professionals, file="Shiny Project/Prohect-Shiny/data/professionals.rds")
 
+#************* doctors and nurses graduates
+
+nurses = read.csv("Shiny Project/Prohect-Shiny/Sources/NURSEGRAD-TOT-100000HAB_80_13.csv",
+                  skip = 8, header=TRUE, check.names=FALSE ,stringsAsFactors=FALSE)[ ,1:35]
+nurses = melt(nurses,id = 'Location')
+colnames(nurses) = c("Location","Year", "graduates")
+nurses = mutate(nurses,type="Nurse")
+
+
+docs = read.csv("Shiny Project/Prohect-Shiny/Sources/MEDICALGRAD-TOT-100000HAB_80_13.csv",
+                skip = 8, header=TRUE, check.names=FALSE,stringsAsFactors=FALSE )[ ,1:35]
+docs = melt(docs,id = 'Location')
+colnames(docs) = c("Location","Year", "graduates")
+docs = mutate(docs,type="Doctor")
+
+
+graduates= rbind(nurses,docs)
+saveRDS(graduates, file="Shiny Project/Prohect-Shiny/data/graduates.rds")
 
 

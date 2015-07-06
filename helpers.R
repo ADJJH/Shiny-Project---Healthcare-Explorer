@@ -143,8 +143,27 @@ plot_profs = function (min = 1960, max = 2013, professionals,country){
             geom_line(data=selected_prof)+
             ylab("Total professionals [Per 1000 inhabitants]")+
             xlab("Year")      
-
       
 }
 
+
+
+plot_grads = function (min = 1960, max = 2013, graduates,country){ 
+     
+      graduates$type = as.factor(graduates$type)
+      graduates$Year = as.integer(as.character(graduates$Year))
+      
+      selected_grad=filter(graduates,Location== country)
+      
+      
+      selected_grad %>%
+            
+            ggplot (.,aes(x=Year, y=graduates , color = type)) +
+            
+            geom_line(data=selected_grad)+
+            #theme(legend.position="none")+
+            ylab("Total graduates [Per 1000 inhabitants]")+
+            xlab("Year")      
+      
+}
 
