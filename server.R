@@ -25,8 +25,8 @@ shinyServer(
             output$plot_ALL_UL <- renderPlot({
                   
                   args=list()
-                  args$min <- input$year[1]
-                  args$max <- input$year[2]
+                  #args$min <- input$year[1]
+                  args$year <- input$year[1]
                   args$df1 <- docs_consul
                   args$df2 <- remuneration
                   args$country <- input$country[1]

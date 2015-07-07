@@ -99,6 +99,7 @@ shinyUI(
                         
                         column(2,
                               
+                               
                                helpText("Comparison among countries "),      
                                selectInput("country",  
                                            label = "Choose a country to highlight",
@@ -108,10 +109,10 @@ shinyUI(
                                ),
                                
                                
-                               sliderInput("year",  
+                               selectInput("year",  
                                            label = "Years",
-                                           min = 2000, max = 2011, value = as.integer(c(1980, 2013)),
-                                           sep = "",round== TRUE, step=1
+                                           choices = rbind(c(""),as.integer(seq(1980,2013,by =1)))
+                                           
                                ),
                                
                                radioButtons("radio", label = "Medical devices",
