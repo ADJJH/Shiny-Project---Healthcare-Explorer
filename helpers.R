@@ -1,5 +1,5 @@
 
-plot_UL = function ( year = 2011, df1,df2,country){
+plot_UL = function ( year , df1,df2,country){
 
       docs_consul=df1
       remuneration = df2
@@ -21,8 +21,10 @@ plot_UL = function ( year = 2011, df1,df2,country){
                         geom_point(colour="#C0C0C0",size = 8) +
                         geom_point(data=selected,colour="#000099",size = 8)+
                         theme(legend.position="none") +
-                        ylab("# Consultations [per day]") +
-                        xlab ('Ratio of remuneration')
+                        ylab(expression(bold("# Consultations [per day]"))) +
+                        xlab (expression(bold('Ratio of remuneration'))) +
+                        theme_bw() +
+                        theme (panel.grid.major = element_blank(), panel.grid.minor = element_blank())
             
       df_ul<-df_ul[complete.cases(df_ul),c("Location","Nmr_consult","Salary")]
            
@@ -52,8 +54,10 @@ plot_UR = function (year, beds,hosp_stay,country){
                         geom_point(colour="#C0C0C0",size = 8) +
                         geom_point(data=selected_ur,colour="#000099",size = 8)+
                         theme(legend.position="none")+
-                        ylab("Total beds [per 1k inhabitants]")+
-                        xlab("Length of stay [days]")     
+                        ylab(expression(bold("Total beds [per 1k inhabitants]")))+
+                        xlab(expression(bold("Length of stay [days]")))  +
+                        theme_bw() +
+                        theme (panel.grid.major = element_blank(), panel.grid.minor = element_blank())   
       
       df_ur<-filter(df_ur, Year==year)
       df_ur<-df_ur[complete.cases(df_ur),c("Location","nmr_days","beds_nmr")]
@@ -84,8 +88,11 @@ plot_BR = function (year, population,life_exp,country){
                         geom_point(colour="#C0C0C0",size = 8) +
                         geom_point(data=selected_br,colour="#000099",size = 8)+
                         theme(legend.position="none")+
-                        ylab("Life expectancy [years]")+
-                        xlab("Total population [Mill habitants]")      
+                        ylab(expression(bold("Life expectancy [years]")))+
+                        xlab(expression(bold("Total population [Mill habitants]")))  +
+                        theme_bw() +
+                        theme (panel.grid.major = element_blank(), panel.grid.minor = element_blank())   
+      
       
       df_br<-filter(df_br, Year==year)
       df_br<-df_br[complete.cases(df_br),c("Location","habitants","exp_years")]
@@ -117,8 +124,11 @@ plot_BL = function (year, spending,med_units,country){
                         geom_point(colour="#C0C0C0",size = 8) +
                         geom_point(data=selected_bl,colour="#000099",size = 8)+
                         theme(legend.position="none")+
-                        ylab("Total units [1M habitants]")+
-                        xlab("Health expenditure [%GDP]")      
+                        ylab(expression(bold("Total units [1M habitants]")))+
+                        xlab(expression(bold("Health expenditure [%GDP]")))  +
+                        theme_bw() +
+                        theme (panel.grid.major = element_blank(), panel.grid.minor = element_blank())   
+      
       
       df_bl<-filter(df_bl, Year==year)
       df_bl<-df_bl[complete.cases(df_bl),c("Location","GDPp","med_units")]
