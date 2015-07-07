@@ -52,7 +52,7 @@ shinyUI(
                                fluidRow(
                                     
                                           column(6, align="center",
-                                                "Plot UR (only 2011 data available)",
+                                                "Doctors (GP Salaried) (only 2011 data available)",
                                                 
                                                 plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot_ul_brush"),
                                                            ,width="300px",height="300px"),
@@ -61,7 +61,7 @@ shinyUI(
                                           ),
                                           
                                           column(6,
-                                                "Plot UL", align="center",
+                                                "Hospitals", align="center",
                                                 
                                                 plotOutput("plot_ALL_UR",  brush = brushOpts(id = "plot_ur_brush"),
                                                            ,width="300px",height="300px"),
@@ -75,7 +75,7 @@ shinyUI(
                                fluidRow(
                                      
                                            column(6, 
-                                                  "Plot BL", align="center",
+                                                  "Spending - Resources", align="center",
                                                   
                                                   plotOutput("plot_ALL_BL",  brush = brushOpts(id = "plot_bl_brush"),
                                                              ,width="300px",height="300px"),
@@ -83,7 +83,7 @@ shinyUI(
                                           ),
                                           
                                           column(6,
-                                                  "Plot BR", align="center",
+                                                  "Population", align="center",
                                                  
                                                  plotOutput("plot_ALL_BR",  brush = brushOpts(id = "plot_br_brush"),
                                                             ,width="300px",height="300px"),
