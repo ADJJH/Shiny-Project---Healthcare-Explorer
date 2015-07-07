@@ -1,5 +1,5 @@
 
-plot_UL = function ( year , df1,df2,country){
+plot_UL = function ( year , df1,df2,country,docs_type){
 
       docs_consul=df1
       remuneration = df2
@@ -7,7 +7,7 @@ plot_UL = function ( year , df1,df2,country){
       remuneration$Year = as.integer(as.character(remuneration$Year))
       docs_consul$Year = as.integer(as.character(docs_consul$Year))
       
-      remuneration <- filter(remuneration, Type_doc_job == "GP_Salaried")
+      remuneration <- filter(remuneration, Type_doc_job == docs_type)
       
       
       #year = max

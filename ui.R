@@ -115,6 +115,14 @@ shinyUI(
                                            
                                ),
                                
+                               selectInput("docs_type",  
+                                           label = "Doctor Type",
+                                           choices = rbind(c("", "GP_Salaried",
+                                                             "GP_Self", "Specialist_Salaried",
+                                                             "Specialist_Self"))
+                                           
+                               ),
+                               
                                radioButtons("radio", label = "Medical devices",
                                             choices = list("MRI" = "mri", "CT" = "ct"),
                                             selected = "mri"

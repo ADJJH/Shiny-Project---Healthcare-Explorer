@@ -30,6 +30,7 @@ shinyServer(
                   args$df1 <- docs_consul
                   args$df2 <- remuneration
                   args$country <- input$country[1]
+                  args$docs_type <- input$docs_type[1]
                   ul<-do.call(plot_UL,args)
                   ul[[1]]
             })
@@ -46,6 +47,7 @@ shinyServer(
                   args$df1 <- docs_consul
                   args$df2 <- remuneration
                   args$country <- input$country[1]
+                  args$docs_type <- input$docs_type[1]
                   ul <- do.call(plot_UL,args)
                   
                   brushedPoints(ul[[2]], input$plot_ul_brush,allRows = FALSE)
