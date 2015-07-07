@@ -95,7 +95,7 @@ shinyServer(
             output$info_bl <- renderPrint({     
                   args_bl=list()
                   #args_bl$min <- input$year[1]
-                  args_bl$max <- input$year[1]
+                  args_bl$year <- input$year[1]
                   args_bl$spending <- spending
                   args_bl$med_units <-  switch(input$radio,
                                                "mri" = mri,

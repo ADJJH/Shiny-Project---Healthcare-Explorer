@@ -51,7 +51,7 @@ shinyUI(
                                #h3("Healthcare explorer"),
                                fluidRow(
                                     
-                                          column(6, 
+                                          column(6, align="center",
                                                 "Plot UR (only 2011 data available)",
                                                 
                                                 plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot_ul_brush"),
@@ -61,7 +61,7 @@ shinyUI(
                                           ),
                                           
                                           column(6,
-                                                "Plot UL",
+                                                "Plot UL", align="center",
                                                 
                                                 plotOutput("plot_ALL_UR",  brush = brushOpts(id = "plot_ur_brush"),
                                                            ,width="300px",height="300px"),
@@ -75,7 +75,7 @@ shinyUI(
                                fluidRow(
                                      
                                            column(6, 
-                                                  "Plot BL",
+                                                  "Plot BL", align="center",
                                                   
                                                   plotOutput("plot_ALL_BL",  brush = brushOpts(id = "plot_bl_brush"),
                                                              ,width="300px",height="300px"),
@@ -83,7 +83,7 @@ shinyUI(
                                           ),
                                           
                                           column(6,
-                                                  "Plot BR",
+                                                  "Plot BR", align="center",
                                                  
                                                  plotOutput("plot_ALL_BR",  brush = brushOpts(id = "plot_br_brush"),
                                                             ,width="300px",height="300px"),
