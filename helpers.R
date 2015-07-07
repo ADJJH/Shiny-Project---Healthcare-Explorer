@@ -31,14 +31,14 @@ plot_UL = function ( year = 2011, df1,df2,country){
 }
 
 
-plot_UR = function (min = 1960, max = 2013, beds,hosp_stay,country){
+plot_UR = function (year, beds,hosp_stay,country){
       
       
       beds$beds_nmr = as.numeric(as.character(beds$beds_nmr))
       beds$Year = as.integer(as.character(beds$Year))
       hosp_stay$Year = as.integer(as.character(hosp_stay$Year))
       hosp_stay$nmr_days = as.integer(as.character(hosp_stay$nmr_days))
-      year = max
+      #year = max
       
       df_ur = inner_join(beds,hosp_stay,by=c("Location", "Year"))
       selected_ur=filter(df_ur,Location== country, Year==year)
@@ -63,7 +63,7 @@ plot_UR = function (min = 1960, max = 2013, beds,hosp_stay,country){
             
 }
       
-plot_BR = function (min = 1960, max = 2013, population,life_exp,country){      
+plot_BR = function (year, population,life_exp,country){      
 
       population$habitants = as.numeric(as.character(population$habitants))
       population$Year = as.integer(as.character(population$Year))
@@ -73,7 +73,7 @@ plot_BR = function (min = 1960, max = 2013, population,life_exp,country){
       df_br = inner_join(population,life_exp,by=c("Location", "Year"))
       
       
-      year = max
+      #year = max
       selected_br=filter(df_br,Location== country, Year==year)
       
      
@@ -96,7 +96,7 @@ plot_BR = function (min = 1960, max = 2013, population,life_exp,country){
 
 
 
-plot_BL = function (min = 1960, max = 2013, spending,med_units,country){ 
+plot_BL = function (year, spending,med_units,country){ 
 
 
       spending$GDPp = as.numeric(as.character(spending$GDPp))
@@ -104,7 +104,7 @@ plot_BL = function (min = 1960, max = 2013, spending,med_units,country){
       med_units$Year = as.integer(as.character(med_units$Year))
       med_units$med_units = as.integer(as.character(med_units$med_units))
       
-      year=max
+      #year=max
       df_bl = inner_join(spending,med_units,by=c("Location", "Year"))
       
       

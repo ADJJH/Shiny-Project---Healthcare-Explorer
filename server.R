@@ -41,8 +41,8 @@ shinyServer(
             
             output$info_ul <- renderPrint({
                   args=list()
-                  args$min <- input$year[1]
-                  args$max <- input$year[2]
+                  #args$min <- input$year[1]
+                  args$year <- input$year[1]
                   args$df1 <- docs_consul
                   args$df2 <- remuneration
                   args$country <- input$country[1]
@@ -54,8 +54,8 @@ shinyServer(
             #******** UR *************#
             output$plot_ALL_UR <- renderPlot({      
                   args_ur=list()
-                  args_ur$min <- input$year[1]
-                  args_ur$max <- input$year[2]
+                  #args_ur$min <- input$year[1]
+                  args_ur$year <- input$year[1]
                   args_ur$beds <- beds
                   args_ur$hosp_stay <- hosp_stay
                   args_ur$country <- input$country[1]
@@ -65,8 +65,8 @@ shinyServer(
 
             output$info_ur <- renderPrint({
                   args_ur=list()
-                  args_ur$min <- input$year[1]
-                  args_ur$max <- input$year[2]
+                  #args_ur$min <- input$year[1]
+                  args_ur$year <- input$year[1]
                   args_ur$beds <- beds
                   args_ur$hosp_stay <- hosp_stay
                   args_ur$country <- input$country[1]
@@ -79,8 +79,8 @@ shinyServer(
             #******** BL *************#
             output$plot_ALL_BL <- renderPlot({      
                               args_bl=list()
-                              args_bl$min <- input$year[1]
-                              args_bl$max <- input$year[2]
+                              #args_bl$min <- input$year[1]
+                              args_bl$year <- input$year[1]
                               args_bl$spending <- spending
                               args_bl$med_units <-  switch(input$radio,
                                                             "mri" = mri,
@@ -94,8 +94,8 @@ shinyServer(
             
             output$info_bl <- renderPrint({     
                   args_bl=list()
-                  args_bl$min <- input$year[1]
-                  args_bl$max <- input$year[2]
+                  #args_bl$min <- input$year[1]
+                  args_bl$max <- input$year[1]
                   args_bl$spending <- spending
                   args_bl$med_units <-  switch(input$radio,
                                                "mri" = mri,
@@ -110,8 +110,8 @@ shinyServer(
             #******** BR *************#
             output$plot_ALL_BR <- renderPlot({      
                   args_br=list()
-                  args_br$min <- input$year[1]
-                  args_br$max <- input$year[2]
+                  #args_br$min <- input$year[1]
+                  args_br$year <- input$year[1]
                   args_br$population <- population
                   args_br$life_exp <- life_exp
                   args_br$country <- input$country[1]
@@ -122,8 +122,8 @@ shinyServer(
             
             output$info_br <- renderPrint({     
                   args_br=list()
-                  args_br$min <- input$year[1]
-                  args_br$max <- input$year[2]
+                  #args_br$min <- input$year[1]
+                  args_br$year <- input$year[1]
                   args_br$population <- population
                   args_br$life_exp <- life_exp
                   args_br$country <- input$country[1]
