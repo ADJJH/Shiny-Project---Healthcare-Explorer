@@ -42,7 +42,7 @@ countries_oecd = c("",
 
 shinyUI(
       
-      navbarPage("Healthcare explorer",
+      navbarPage(("Healthcare explorer"),
             tabPanel("By Year", 
       
       #fluidPage(
@@ -52,7 +52,7 @@ shinyUI(
                                fluidRow(
                                     
                                           column(6, align="center",
-                                                "Doctors (GP Salaried) (only 2011 data available)",
+                                                h4("Doctors  (only 2011 data available)"),
                                                 
                                                 plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot_ul_brush"),
                                                            ,width="300px",height="300px"),
@@ -61,7 +61,8 @@ shinyUI(
                                           ),
                                           
                                           column(6,
-                                                "Hospitals", align="center",
+                                                h4("Hospitals"),
+                                                align="center",
                                                 
                                                 plotOutput("plot_ALL_UR",  brush = brushOpts(id = "plot_ur_brush"),
                                                            ,width="300px",height="300px"),
@@ -75,7 +76,8 @@ shinyUI(
                                fluidRow(
                                      
                                            column(6, 
-                                                  "Spending - Resources", align="center",
+                                                  h4("Spending - Resources"), 
+                                                  align="center",
                                                   
                                                   plotOutput("plot_ALL_BL",  brush = brushOpts(id = "plot_bl_brush"),
                                                              ,width="300px",height="300px"),
@@ -83,7 +85,8 @@ shinyUI(
                                           ),
                                           
                                           column(6,
-                                                  "Population", align="center",
+                                                  h4("Population"),
+                                                 align="center",
                                                  
                                                  plotOutput("plot_ALL_BR",  brush = brushOpts(id = "plot_br_brush"),
                                                             ,width="300px",height="300px"),
