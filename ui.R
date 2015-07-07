@@ -1,3 +1,5 @@
+#includeCSS("www/custom.css")
+
 countries_oecd = c("",
                   'Australia',
                    'Austria',
@@ -42,11 +44,15 @@ countries_oecd = c("",
 
 shinyUI(
       
-      navbarPage(("Healthcare explorer"),
-            tabPanel("By Year", 
       
-      #fluidPage(
-                  fluidRow(
+     
+      navbarPage(
+            
+            tags$head(includeCSS("www/custom.css")),
+            ("Healthcare explorer"),
+            tabPanel("By Year", 
+            
+                       fluidRow(
                         column(10,
                                #h3("Healthcare explorer"),
                                fluidRow(
@@ -59,6 +65,12 @@ shinyUI(
                                                 verbatimTextOutput("info_ul")
                                                                                                 
                                           ),
+                                          
+
+                              # ),
+                                          
+                                          
+                                          
                                           
                                           column(6,
                                                 h4("Hospitals"),

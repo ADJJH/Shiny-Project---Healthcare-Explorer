@@ -50,6 +50,8 @@ shinyServer(
                   args$docs_type <- input$docs_type[1]
                   ul <- do.call(plot_UL,args)
                   
+                  #cat("input$plot_ul_brush:\n")
+                  #str(input$plot_ul_brush)
                   brushedPoints(ul[[2]], input$plot_ul_brush,allRows = FALSE)
             })
             

@@ -89,7 +89,7 @@ plot_BR = function (year, population,life_exp,country){
                         geom_point(data=selected_br,colour="#000099",size = 8)+
                         theme(legend.position="none")+
                         ylab(expression(bold("Life expectancy [years]")))+
-                        xlab(expression(bold("Total population [Mill habitants]")))  +
+                        xlab(expression(bold("Total population [1M habitants]")))  +
                         theme_bw() +
                         theme (panel.grid.major = element_blank(), panel.grid.minor = element_blank())   
       
