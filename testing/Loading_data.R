@@ -3,6 +3,46 @@ library(xlsx)
 library(reshape)
 library (stringr)
 
+countries_oecd = c("",
+                   'Australia',
+                   'Austria',
+                   'Belgium',
+                   'Brazil',
+                   'Canada',
+                   'Chile',
+                   'Czech Republic',
+                   'Denmark',
+                   'Estonia',
+                   'Finland',
+                   'France',
+                   'Germany',
+                   'Greece',
+                   'Hungary',
+                   'Iceland',
+                   'Ireland',
+                   'Israel',
+                   'Italy',
+                   'Japan',
+                   'Korea',
+                   'Luxembourg',
+                   'Mexico',
+                   'Netherlands',
+                   'New Zealand',
+                   'Norway',
+                   'Poland',
+                   'Portugal',
+                   'Russia',
+                   'Slovak Republic',
+                   'Slovenia',
+                   'South Africa',
+                   'Spain',
+                   'Switzerland',
+                   'Turkey',
+                   'United Kingdom',
+                   'United States'
+)
+
+
 #************************************ Upper left ************************************************
 
 ##### Importing data 
@@ -70,12 +110,15 @@ population = read.csv("Shiny Project/Prohect-Shiny/Sources/POP-TOT-MLN_PER_1960_
 
 population = melt(population,id = 'Location')
 colnames(population) = c("Location","Year", "habitants")
-
+population = filter(population,Location  %in%  countries_oecd)
 
 life_exp = read.csv("Shiny Project/Prohect-Shiny/Sources/LIFEEXP-TOT-1960-2013.csv",
                      skip = 8, header=TRUE, check.names=FALSE )[ ,1:55]
 life_exp = melt(life_exp,id = 'Location')
 colnames(life_exp) = c("Location","Year", "exp_years")
+life_exp = filter(life_exp,Location  %in%  countries_oecd)
+
+
 
 
 saveRDS(life_exp, file="Shiny Project/Prohect-Shiny/data/life_exp.rds")

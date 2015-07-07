@@ -111,6 +111,8 @@ plot_BL = function (year, spending,med_units,country){
       med_units$Year = as.integer(as.character(med_units$Year))
       med_units$med_units = as.integer(as.character(med_units$med_units))
       
+      
+      
       #year=max
       df_bl = inner_join(spending,med_units,by=c("Location", "Year"))
       
