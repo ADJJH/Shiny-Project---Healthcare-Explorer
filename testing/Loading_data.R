@@ -64,7 +64,7 @@ colnames(remuneration) = c("Location","Year","GP_Salaried",
 remuneration$Year = 2011
 
 #Removing non alpha strings
-remuneration$Location = str_replace_all(remuneration$Location, "[^A-z]", "")
+#remuneration$Location = str_replace_all(remuneration$Location, "[^A-z]", "")
 
 # Tranposing columns GP, specialist, self employed and salaried
 remuneration <- melt(remuneration, id=c("Location","Year"))
