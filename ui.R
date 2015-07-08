@@ -65,13 +65,7 @@ shinyUI(
                                                 verbatimTextOutput("info_ul")
                                                                                                 
                                           ),
-                                          
-
-                              # ),
-                                          
-                                          
-                                          
-                                          
+                                              
                                           column(6,
                                                 h4("Hospitals"),
                                                 align="center",
