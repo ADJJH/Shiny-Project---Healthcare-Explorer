@@ -19,7 +19,7 @@ plot_UL = function ( year , df1,df2,country,docs_type){
                   filter(., Year==year) %>%
                   ggplot (.,aes(x= Salary, y=Nmr_consult , color = Location)) +
                         geom_point(colour="#C0C0C0",size = 8) +
-                        geom_point(data=selected,colour="#000099",size = 8)+
+                        geom_point(data=selected,colour="#0C80A9",size = 8)+
                         theme(legend.position="none") +
                         ylab(expression(bold("# Consultations [per day]"))) +
                         xlab (expression(bold('Ratio of remuneration'))) +
@@ -52,7 +52,7 @@ plot_UR = function (year, beds,hosp_stay,country){
                   filter(., Year==year) %>%
                         ggplot (.,aes(x= nmr_days, y=beds_nmr , color = Location)) +
                         geom_point(colour="#C0C0C0",size = 8) +
-                        geom_point(data=selected_ur,colour="#000099",size = 8)+
+                        geom_point(data=selected_ur,colour="#0C80A9",size = 8)+
                         theme(legend.position="none")+
                         ylab(expression(bold("Total beds [per 1k inhabitants]")))+
                         xlab(expression(bold("Length of stay [days]")))  +
@@ -86,7 +86,7 @@ plot_BR = function (year, population,life_exp,country){
                   filter(., Year==year) %>%
                         ggplot (.,aes(x=habitants, y=exp_years , color = Location)) +
                         geom_point(colour="#C0C0C0",size = 8) +
-                        geom_point(data=selected_br,colour="#000099",size = 8)+
+                        geom_point(data=selected_br,colour="#0C80A9",size = 8)+
                         theme(legend.position="none")+
                         ylab(expression(bold("Life expectancy [years]")))+
                         xlab(expression(bold("Total population [1M habitants]")))  +
@@ -124,7 +124,7 @@ plot_BL = function (year, spending,med_units,country){
                   filter(., Year==year) %>%
                         ggplot (.,aes(x=GDPp, y=med_units , color = Location)) +
                         geom_point(colour="#C0C0C0",size = 8) +
-                        geom_point(data=selected_bl,colour="#000099",size = 8)+
+                        geom_point(data=selected_bl,colour="#0C80A9",size = 8)+
                         theme(legend.position="none")+
                         ylab(expression(bold("Total units [1M habitants]")))+
                         xlab(expression(bold("Health expenditure [%GDP]")))  +

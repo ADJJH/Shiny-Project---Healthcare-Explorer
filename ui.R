@@ -178,7 +178,7 @@ shinyUI(
                                   
                                   helpText("Comparison among countries "),      
                                   selectInput("country2",  
-                                              label = "Choose a country to highlight",
+                                              label = "Choose a country",
                                               choices = countries_oecd,
                                               selected = NULL
                                               
