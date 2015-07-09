@@ -156,7 +156,9 @@ plot_profs = function (min = 1980, max = 2013, professionals,country){
             geom_line(data=selected_prof)+
             ylab("Total professionals [Per 1000 inhabitants]")+
             xlab("Year") +
-            theme(legend.position="bottom", legend.title = element_blank())
+            theme(legend.position="bottom", legend.title = element_blank(),
+                  panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                  panel.background = element_rect(fill = 'white', colour = 'grey'))
       
 }
 
@@ -178,7 +180,9 @@ plot_grads = function (min = 1980, max = 2013, graduates,country){
             #theme(legend.position="none")+
             ylab("Total graduates [Per 1000 inhabitants]")+
             xlab("Year") +      
-            theme(legend.position="bottom", legend.title = element_blank())
+            theme(legend.position="bottom", legend.title = element_blank(),
+                  panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                  panel.background = element_rect(fill = 'white', colour = 'grey'))
       
 }
 

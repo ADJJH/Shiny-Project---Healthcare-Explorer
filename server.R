@@ -159,9 +159,12 @@ shinyServer(
                                     graduates %>% ggplot (.,aes(x=Year, y=graduates)) +
                                                       geom_point(aes(color=type)) +
                                                       scale_x_discrete(breaks=seq(1980,2010,10))+
-                                                      theme(legend.position="bottom", legend.title = element_blank()) +
+                                                      theme(legend.position="bottom", legend.title = element_blank(),
+                                                            panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                            panel.background = element_rect(fill = 'white', colour = 'grey')) +
                                                       ylab("Total graduates [Per 1000 inhabitants]")+
                                                       xlab("Year")
+                                                      #theme_bw() 
                   
             })
 
@@ -173,13 +176,14 @@ shinyServer(
                                           ggplot (.,aes(x=Year, y=professionals)) +
                                           geom_point(aes(color=type)) +
                                           #scale_x_discrete(breaks=seq(1980,2010,10))+
-                                          theme(legend.position="bottom", legend.title = element_blank()) +
+                                          theme(legend.position="bottom", legend.title = element_blank(),
+                                                panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                                panel.background = element_rect(fill = 'white', colour = 'grey')) +
                                           ylab("Total professionals [Per 1000 inhabitants]")+
-                                          xlab("Year")  
+                                          xlab("Year") 
+                                          #theme_bw() 
                   
             })
-
-
 
       }
 )
