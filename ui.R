@@ -149,17 +149,13 @@ shinyUI(
                            column(10,
                                   
                                   fluidRow(
-                                        column(6,
-                                               plotOutput("plot_profs_all")
-                                        ) ,
+                                        column(12,
+                                               plotOutput("plot_DE")
+                                          ) 
                                         
-                                        column(6,
-                                               plotOutput("plot_grads_all")
-                                          )     
-                                    
-
-                                         
-                                        
+#                                         column(6,
+#                                                plotOutput("plot_grads_all")
+#                                           )     
                                     ),
                                     
                                   
@@ -179,7 +175,7 @@ shinyUI(
                                   helpText("Comparison among countries "),      
                                   selectInput("country2",  
                                               label = "Choose a country",
-                                              choices = countries_oecd,
+                                              choices = rbind(c("All"),countries_oecd),
                                               selected = NULL
                                               
                                   ),
@@ -189,7 +185,12 @@ shinyUI(
                                               label = "Years",
                                               min = 1980, max = 2013, value = as.integer(c(1980, 2013)),
                                               sep = "",round== TRUE, step=1
-                                  )
+                                  ),
+                                  
+                                  radioButtons("radio2", label = "Medical devices",
+                                               choices = list("MRI" = "mri", "CT" = "ct"),
+                                               selected = "mri"
+                                  ) 
                                   
                                   
                                   

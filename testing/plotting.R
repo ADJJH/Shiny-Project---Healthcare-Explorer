@@ -180,9 +180,34 @@ graduates %>% ggplot (.,aes(x=Year, y=graduates , color=Location)) +
       geom_line(aes(linetype=type))
 
 
+###### MRI/ct exams and units
+
+exams<- readRDS("Shiny Project/Prohect-Shiny/data/ct_exams.rds")
+exams$type = as.factor(exams$type)
+exams$Year = as.integer(as.character(exams$Year))
+
+country = "France"
+
+min=1995
+max=2013
+exams=filter(exams,Location == country & (Year>=min & Year<=max )) %>%
+            group_by(.,Location,Year) %>% summarise(.,total=sum(exams)) %>%
+                  mutate(.,type2="exams")
+
+med_units <- readRDS("Shiny Project/Prohect-Shiny/data/ct.rds")
+med_units$Year = as.integer(as.character(med_units$Year))
+med_units$med_units = as.integer(as.character(med_units$med_units))
+med_units=filter(med_units,Location == country & (Year>=min & Year<=max )) %>%
+            mutate(.,type2="units")
+colnames(med_units)[3]="total"
+
+device_exam = rbind(med_units,exams)
 
 
-
-
+device_exam %>%
+      ggplot (.,aes(x=Year, y=total,color=type2 )) +
+      geom_line()+
+      ylab("Total units/exams [Per 1M inhabitants]")+
+      xlab("Year")      
 
 

@@ -189,3 +189,38 @@ graduates= rbind(nurses,docs)
 saveRDS(graduates, file="Shiny Project/Prohect-Shiny/data/graduates.rds")
 
 
+#*********** mri, ct exams
+
+mri_exams_h = read.csv("Shiny Project/Prohect-Shiny/Sources/MRIEXAM-INHOSPITAL-1000HAB_90_13.csv",
+                       skip = 8, header=TRUE, check.names=FALSE ,stringsAsFactors=FALSE)[ ,1:20]
+mri_exams_h = melt(mri_exams_h,id = 'Location')
+colnames(mri_exams_h) = c("Location","Year", "exams")
+mri_exams_h = mutate(mri_exams_h,type="Hospital")
+
+mri_exams_a = read.csv("Shiny Project/Prohect-Shiny/Sources/MRIEXAM-INAMBULATORY-1000HAB_90_13.csv",
+                       skip = 8, header=TRUE, check.names=FALSE ,stringsAsFactors=FALSE)[ ,1:20]
+mri_exams_a = melt(mri_exams_a,id = 'Location')
+colnames(mri_exams_a) = c("Location","Year", "exams")
+mri_exams_a = mutate(mri_exams_a,type="Ambulatory")
+
+mri_exams = rbind(mri_exams_h,mri_exams_a)
+
+
+
+ct_exams_h = read.csv("Shiny Project/Prohect-Shiny/Sources/CTEXAM-INHOSPITAL-1000HAB_90_13.csv",
+                       skip = 8, header=TRUE, check.names=FALSE ,stringsAsFactors=FALSE)[ ,1:25]
+ct_exams_h = melt(ct_exams_h,id = 'Location')
+colnames(ct_exams_h) = c("Location","Year", "exams")
+ct_exams_h = mutate(ct_exams_h,type="Hospital")
+
+ct_exams_a = read.csv("Shiny Project/Prohect-Shiny/Sources/CTEXAM-INAMBULATORY-1000HAB_90_13.csv",
+                       skip = 8, header=TRUE, check.names=FALSE ,stringsAsFactors=FALSE)[ ,1:20]
+ct_exams_a = melt(ct_exams_a,id = 'Location')
+colnames(ct_exams_a) = c("Location","Year", "exams")
+ct_exams_a = mutate(ct_exams_a,type="Ambulatory")
+
+ct_exams = rbind(ct_exams_h,ct_exams_a)
+
+
+saveRDS(mri_exams, file="Shiny Project/Prohect-Shiny/data/mri_exams.rds")
+saveRDS(ct_exams, file="Shiny Project/Prohect-Shiny/data/ct_exams.rds")

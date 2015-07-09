@@ -146,14 +146,20 @@ plot_profs = function (min = 1980, max = 2013, professionals,country){
       
       professionals$type = as.factor(professionals$type)
       professionals$Year = as.integer(as.character(professionals$Year))
+                  
+            if (country=="All"){
+                  selected_prof=filter(professionals, (Year>=min & Year<=max ))
+            }
             
+            else {
+                  selected_prof=filter(professionals,Location == country & (Year>=min & Year<=max ))
+            }
       
-      selected_prof=filter(professionals,Location == country & (Year>=min & Year<=max ))
-            
+      
       selected_prof %>%
             
             ggplot (.,aes(x=Year, y=professionals , color = type)) +
-            geom_line(data=selected_prof,size=1)+
+            geom_point(data=selected_prof)+
             ylab("Total professionals [Per 1000 inhabitants]")+
             xlab("Year") +
             theme(legend.position="bottom", legend.title = element_blank(),
@@ -169,14 +175,23 @@ plot_grads = function (min = 1980, max = 2013, graduates,country){
       graduates$type = as.factor(graduates$type)
       graduates$Year = as.integer(as.character(graduates$Year))
       
-      selected_grad=filter(graduates,Location == country & (Year>=min & Year<=max ))
+      #selected_grad=filter(graduates,Location == country & (Year>=min & Year<=max ))
+      
+      
+      if (country=="All"){
+            selected_grad=filter(graduates, (Year>=min & Year<=max ))
+      }
+      
+      else {
+            selected_grad=filter(graduates,Location == country & (Year>=min & Year<=max ))
+      }
       
       
       selected_grad %>%
             
             ggplot (.,aes(x=Year, y=graduates , color = type)) +
             
-            geom_line(data=selected_grad,size=1)+
+            geom_point(data=selected_grad)+
             #theme(legend.position="none")+
             ylab("Total graduates [Per 1000 inhabitants]")+
             xlab("Year") +      
@@ -184,5 +199,30 @@ plot_grads = function (min = 1980, max = 2013, graduates,country){
                   panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                   panel.background = element_rect(fill = 'white', colour = 'grey'))
       
+}
+
+
+plot_device_exam = function (min = 1980, max = 2013, med_units,exams,country){ 
+
+     
+      exams$type = as.factor(exams$type)
+      exams$Year = as.integer(as.character(exams$Year))
+      exams=filter(exams,Location == country & (Year>=min & Year<=max )) %>%
+            group_by(.,Location,Year) %>% summarise(.,total=sum(exams)) %>%
+            mutate(.,type2="exams")
+      
+      
+      med_units$Year = as.integer(as.character(med_units$Year))
+      med_units$med_units = as.integer(as.character(med_units$med_units))
+      med_units=filter(med_units,Location == country & (Year>=min & Year<=max )) %>%
+            mutate(.,type2="units")
+      colnames(med_units)[3]="total"
+      
+      device_exam = rbind(med_units,exams)
+      device_exam %>%
+            ggplot (.,aes(x=Year, y=total,color=type2 )) +
+            geom_line()+
+            ylab("Total units/exams [Per 1M inhabitants]")+
+            xlab("Year")      
 }
 

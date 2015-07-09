@@ -13,6 +13,10 @@ mri <- readRDS("data/mri.rds")
 ct <- readRDS("data/ct.rds")
 professionals<- readRDS("data/professionals.rds")
 graduates<- readRDS("data/graduates.rds")
+ct_exams<- readRDS("data/ct_exams.rds")
+mri_exams<- readRDS("data/mri_exams.rds")
+
+
 
 source("helpers.R")
 #source("multiplot.R")
@@ -155,35 +159,22 @@ shinyServer(
                   do.call(plot_grads,args_grad)
             })
 
-            output$plot_grads_all <- renderPlot({      
-                                    graduates %>% ggplot (.,aes(x=Year, y=graduates)) +
-                                                      geom_point(aes(color=type)) +
-                                                      scale_x_discrete(breaks=seq(1980,2010,10))+
-                                                      theme(legend.position="bottom", legend.title = element_blank(),
-                                                            panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-                                                            panel.background = element_rect(fill = 'white', colour = 'grey')) +
-                                                      ylab("Total graduates [Per 1000 inhabitants]")+
-                                                      xlab("Year")
-                                                      #theme_bw() 
+            output$plot_DE <- renderPlot({      
+                  args_de=list()
+                  args_de$min <- input$year2[1]
+                  args_de$max <- input$year2[2]
+                  args_de$med_units <-  switch(input$radio,
+                                               "mri" = mri,
+                                               "ct" = ct,
+                                          )
+                  args_de$exams <-  switch(input$radio2,
+                                               "mri" = mri_exams,
+                                               "ct" = ct_exams,
+                                          )
+                  args_de$country <- input$country2[1]
                   
-            })
-
-            output$plot_profs_all <- renderPlot({    
-                                    professionals$type = as.factor(professionals$type)
-                                    professionals$Year = as.integer(as.character(professionals$Year))
-                                    
-                                    professionals %>% filter(.,Year>=1980) %>%
-                                          ggplot (.,aes(x=Year, y=professionals)) +
-                                          geom_point(aes(color=type)) +
-                                          #scale_x_discrete(breaks=seq(1980,2010,10))+
-                                          theme(legend.position="bottom", legend.title = element_blank(),
-                                                panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-                                                panel.background = element_rect(fill = 'white', colour = 'grey')) +
-                                          ylab("Total professionals [Per 1000 inhabitants]")+
-                                          xlab("Year") 
-                                          #theme_bw() 
-                  
-            })
+                  do.call(plot_device_exam,args_de)
+})
 
       }
 )
