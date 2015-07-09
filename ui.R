@@ -45,11 +45,11 @@ countries_oecd = c("",
 shinyUI(
       
       
-     
+      
       navbarPage(
             
             tags$head(includeCSS("www/custom.css")),
-            ("Healthcare explorer"),
+            title="Healthcare explorer",
             tabPanel("By Year", 
             
                        fluidRow(

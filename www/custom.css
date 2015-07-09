@@ -4,3 +4,29 @@ pre {
 	font-size: 12px;
 	border:none;  
 }
+
+
+.navbar-inner {
+font-size: 110%;
+	color: white;   
+	background-color: #000000 ;
+} 
+
+.navbar-static-top {
+font-size: 110%;
+  position: static;
+  margin-bottom: 0px;
+  color: white;
+  background-color: #000000 ;
+}
+
+.navbar-nav
+{
+color:white;
+}
+
+.navbar-nav > li > a:link
+{
+color:white;
+background-color: #000000
+}
