@@ -143,7 +143,13 @@ selected_prof %>%
       geom_line(data=selected_prof)+
       #theme(legend.position="none")+
       ylab("Total professionals [Per 1000 inhabitants]")+
-      xlab("Year")      
+      xlab("Year")    
+
+
+#### all countries plot
+all_profs = professionals %>% ggplot (.,aes(x=Year, y=professionals , color = type)) +
+            geom_point()
+
 
 ##Graduates
 
@@ -166,6 +172,13 @@ selected_prof %>%
       #theme(legend.position="none")+
       ylab("Total graduates [Per 1000 inhabitants]")+
       xlab("Year")      
+
+graduates %>% ggplot (.,aes(x=Year, y=graduates)) +
+      geom_point(aes(color=type))
+
+graduates %>% ggplot (.,aes(x=Year, y=graduates , color=Location)) +
+      geom_line(aes(linetype=type))
+
 
 
 

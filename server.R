@@ -155,5 +155,31 @@ shinyServer(
                   do.call(plot_grads,args_grad)
             })
 
+            output$plot_grads_all <- renderPlot({      
+                                    graduates %>% ggplot (.,aes(x=Year, y=graduates)) +
+                                                      geom_point(aes(color=type)) +
+                                                      scale_x_discrete(breaks=seq(1980,2010,10))+
+                                                      theme(legend.position="bottom", legend.title = element_blank()) +
+                                                      ylab("Total graduates [Per 1000 inhabitants]")+
+                                                      xlab("Year")
+                  
+            })
+
+            output$plot_profs_all <- renderPlot({    
+                                    professionals$type = as.factor(professionals$type)
+                                    professionals$Year = as.integer(as.character(professionals$Year))
+                                    
+                                    professionals %>% filter(.,Year>=1980) %>%
+                                          ggplot (.,aes(x=Year, y=professionals)) +
+                                          geom_point(aes(color=type)) +
+                                          #scale_x_discrete(breaks=seq(1980,2010,10))+
+                                          theme(legend.position="bottom", legend.title = element_blank()) +
+                                          ylab("Total professionals [Per 1000 inhabitants]")+
+                                          xlab("Year")  
+                  
+            })
+
+
+
       }
 )
