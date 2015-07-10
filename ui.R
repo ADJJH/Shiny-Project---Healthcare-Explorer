@@ -114,7 +114,7 @@ shinyUI(
                                fluidRow(
                                     
                                           column(6, align="center",
-                                                h4("Doctors  (only 2011 data available)"),
+                                                h4("Doctors"),
                                                 
                                                 plotOutput("plot_ALL_UL",  brush = brushOpts(id = "plot_ul_brush"),
                                                            ,width="300px",height="300px"),
@@ -164,8 +164,17 @@ shinyUI(
                         
                         column(2,
                               
+                               helpText("Each bubble represents a country. 
+                                        Brush over a bubble(s) to get information of the selection"),      
                                
-                               helpText("Comparison among countries "),      
+                               helpText("First select a year"),    
+                               selectInput("year",  
+                                           label = "Years",
+                                           choices = rbind(c(""),as.integer(seq(1980,2013,by =1)))
+                                           
+                               ),
+                               
+                               helpText("Select a country to highlight"), 
                                selectInput("country",  
                                            label = "Choose a country to highlight",
                                            choices = countries_oecd,
@@ -174,12 +183,10 @@ shinyUI(
                                ),
                                
                                
-                               selectInput("year",  
-                                           label = "Years",
-                                           choices = rbind(c(""),as.integer(seq(1980,2013,by =1)))
-                                           
-                               ),
+                              
                                
+                               helpText("Select a type of doctor for the 'Doctors' chart.
+                                        Only 2011 data is available for this plot"),  
                                selectInput("docs_type",  
                                            label = "Doctor Type",
                                            choices = rbind(c("", "GP_Salaried",
@@ -188,6 +195,7 @@ shinyUI(
                                            
                                ),
                                
+                               helpText("Select the medical device for the 'Spending - Resources' chart"),  
                                radioButtons("radio", label = "Medical devices",
                                             choices = list("MRI" = "mri", "CT" = "ct"),
                                             selected = "mri"
@@ -226,7 +234,7 @@ shinyUI(
                      
                            column(2,
                                   
-                                  helpText("Comparison among countries "),      
+                                  helpText("Trends"),      
                                   selectInput("country2",  
                                               label = "Choose a country",
                                               choices = rbind(c("All"),countries_oecd),
