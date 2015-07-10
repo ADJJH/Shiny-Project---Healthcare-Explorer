@@ -207,22 +207,30 @@ plot_device_exam = function (min = 1980, max = 2013, med_units,exams,country){
      
       exams$type = as.factor(exams$type)
       exams$Year = as.integer(as.character(exams$Year))
-      exams=filter(exams,Location == country & (Year>=min & Year<=max )) %>%
-            group_by(.,Location,Year) %>% summarise(.,total=sum(exams)) %>%
+      
+      exams=group_by(exams,Location,Year) %>% summarise(.,total=sum(exams)) %>%
             mutate(.,type2="exams")
       
       
       med_units$Year = as.integer(as.character(med_units$Year))
       med_units$med_units = as.integer(as.character(med_units$med_units))
-      med_units=filter(med_units,Location == country & (Year>=min & Year<=max )) %>%
-            mutate(.,type2="units")
+      med_units=mutate(med_units,type2="units")
       colnames(med_units)[3]="total"
       
       device_exam = rbind(med_units,exams)
-      device_exam %>%
+      
+      avg_year = device_exam %>% 
+                        filter(.,(Year>=min & Year<=max ) ) %>%
+                              group_by(.,Year,type2) %>% summarise(.,total = mean(total,na.rm = TRUE))
+      
+      device_exam %>% filter(.,Location == country & (Year>=min & Year<=max )) %>%
             ggplot (.,aes(x=Year, y=total,color=type2 )) +
-            geom_line()+
+            geom_line(size=1)+
+            geom_line(data=avg_year,linetype="dotdash",size=1)+
             ylab("Total units/exams [Per 1M inhabitants]")+
-            xlab("Year")      
+            xlab("Year") +
+            theme(legend.position="bottom", legend.title = element_blank())  +
+            scale_color_manual(values=c("#be8fff", "#98ff8f"))
+      
 }
 

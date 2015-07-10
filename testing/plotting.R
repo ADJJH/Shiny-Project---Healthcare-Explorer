@@ -211,3 +211,39 @@ device_exam %>%
       xlab("Year")      
 
 
+
+##
+
+country = "France"
+
+min=1995
+max=2013
+
+exams$type = as.factor(exams$type)
+exams$Year = as.integer(as.character(exams$Year))
+
+exams=group_by(exams,Location,Year) %>% summarise(.,total=sum(exams)) %>%
+      mutate(.,type2="exams")
+
+
+med_units$Year = as.integer(as.character(med_units$Year))
+med_units$med_units = as.integer(as.character(med_units$med_units))
+med_units=mutate(med_units,type2="units")
+colnames(med_units)[3]="total"
+
+device_exam = rbind(med_units,exams)
+
+avg_year = device_exam %>% 
+      filter(.,(Year>=min & Year<=max ) ) %>%
+      group_by(.,Year,type2) %>% summarise(.,total = mean(total,na.rm = TRUE))
+
+device_exam %>% filter(.,Location == country & (Year>=min & Year<=max )) %>%
+      ggplot (.,aes(x=Year, y=total,color=type2 )) +
+      geom_line()+
+      geom_line(data=avg_year,linetype="dotdash")+
+      ylab("Total units/exams [Per 1M inhabitants]")+
+      xlab("Year")      
+
+
+
+
