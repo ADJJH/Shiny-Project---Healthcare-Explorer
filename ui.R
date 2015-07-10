@@ -145,7 +145,7 @@ shinyUI(
       
  #*********     Second panel **********
             tabPanel("Country",
-                     fluidRow(
+                     #fluidRow(
                            column(10,
                                   
                                   fluidRow(
@@ -153,9 +153,7 @@ shinyUI(
                                                plotOutput("plot_DE")
                                           ) 
                                         
-#                                         column(6,
-#                                                plotOutput("plot_grads_all")
-#                                           )     
+                                                
                                     ),
                                     
                                   
@@ -195,7 +193,7 @@ shinyUI(
                                   
                                   
                               )
-                        )
+                        #)
                      
             ) 
       
