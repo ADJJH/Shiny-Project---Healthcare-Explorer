@@ -22,7 +22,7 @@ plot_UL = function ( year , df1,df2,country,docs_type){
                         geom_point(data=selected,colour="#0C80A9",size = 8)+
                         theme(legend.position="none") +
                         ylab(expression(bold("# Consultations [per day]"))) +
-                        xlab (expression(bold('Ratio of remuneration'))) +
+                        xlab (expression(bold('Remuneration of doctors [Ratio to average wage]'))) +
                         theme_bw() +
                         theme (panel.grid.major = element_blank(), panel.grid.minor = element_blank())
             

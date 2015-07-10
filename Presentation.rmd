@@ -31,12 +31,47 @@ It provides the latest comparable data and trends on different aspects of the pe
 ## Healthcare Explorer
 
 * 12 Healthcare databases from OECD
-* Challenges: 
-      * Missing Data
-      *  
+
+
+<img src="www/intro_he.png" width="500" height="300" align="centered"/>
+
+## Analytics
+GP Salaried:Slovak Rep  & Finland have similar remmuneration but Slovak Rep has 4 times more consultations
+            Hungary - has the lowest remmuneration and the max number of consultations per day
+            Denmark - has the highest remmuneration and one of the lowest number of consultations 
+GP Self: Tend to be give the same number of consultations. Pharma industry (i.e. marketing)
+
+Japan - Appears to have a robust HC system, with big populaiton and high life exptancy rates.It has the highest number of medical devices and number of beds and the longest stays in hospitals. HOwever these also shows how Japan's healthcare system sustainabilty is in question^2^. 
+
+Austria and Germany: good targets for medical devices. They are strong in hospital resources, have high GDP percentages and could increase the number of devices to support large population (Germany). On top of that, both countries also show a continious growth in the number of exams and units (Austria above average). Numbers of doctors are also increasing, but graduates seem to decrease, so a lead campaign could lead more effect in doctors than in students. 
+
+Mexico: Focus on HC leaders!!!!!! and students to create brand prefence. 
+
+Estonia and Turkey could have marketing strategy of refurbished systems. They have low GDP though their number of exams show a fast growth. 
+
+
+Iceland - MRI
+
+Luxemburg - PPP investigate or do loving you ge tmoney by exams than by device 
+
+Spain - considerable decrase in doctor vs increase in nurses
+
+UK - noticeable increase in MRI units than in CT units. Strong GDP%, low MRI and CT units. Sell there!
+
+The increase in med devices and exams was expected
+
+
+Where are all the graduated nurses and doctors are? HC migration?
+
 
 ##References 
 
 1. Deloitte, "2014 Global health care outlook Shared challenges,shared opportunities" 
 https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Life-Sciences-Health-Care/dttl-lshc-2014-global-health-care-sector-report.pdf
+
+2. McKinsey
+"Improving Japan's health care system"
+http://www.mckinsey.com/insights/health_systems_and_services/improving_japans_health_care_system
+
+
  

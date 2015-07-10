@@ -208,7 +208,7 @@ shinyUI(
             ),
       
  #*********     Second panel **********
-            tabPanel("Country",
+            tabPanel("By Country",
                      #fluidRow(
                            column(10,
                                   
