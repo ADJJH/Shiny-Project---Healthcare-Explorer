@@ -50,6 +50,62 @@ shinyUI(
             
             tags$head(includeCSS("www/custom.css")),
             title="Healthcare explorer",
+            
+            tabPanel("Introduction",
+                  br(),
+                  br(),
+                  
+                  
+                  column(2,
+                         h4(""),
+                         br(),
+                         br(),
+                         br(),
+                         
+                         img(src = "beat.jpg",height = 100, width = 135),
+                         img(src = "docs.jpg",height = 100, width = 135),
+                         img(src = "ct2.jpg",height = 100, width = 135)
+                         
+                         
+                  ),   
+                     
+                  column(8,
+                        h4("Welcome to the Healthcare Explorer"),
+                        br(),
+                        
+                        p(" This application is inspired based on the report 'Health at a Glance'
+                        published by OECD (Organisation for Economic Co-operation and Development)."
+                        ),
+                  
+                        p(" The purpose of this application is to enable the discovery of insights and trends
+                        in an interactive way. It uses multiple data sets combined into compact views. This helps the user 
+                        to visualize and analyze data in an easier way."
+                        ),
+                        br(),
+                     
+                        p("The application is divided in two sections:"
+                        
+                        ),
+                     
+                        h5(strong("Year")),
+                     
+                        p( "In this tab you can see how countries compare to others in a specific year."
+                        ),
+                     
+                        h5(strong("Country")),
+                        p("This tab shows information about the trends of doctors, nurses 
+                          and medical devices for a country"),
+                        br(),
+                        
+                  
+                        p("Data was taken from",
+                          a(href="https://data.oecd.org/health.htm", "OECD stats site"), "on July 2015.")
+                  )   
+            
+            
+            
+            ),
+            
             tabPanel("By Year", 
             
                        fluidRow(
