@@ -149,17 +149,19 @@ plot_profs = function (min = 1980, max = 2013, professionals,country){
                   
             if (country=="All"){
                   selected_prof=filter(professionals, (Year>=min & Year<=max ))
+                  alpha_val=0.4
             }
             
             else {
                   selected_prof=filter(professionals,Location == country & (Year>=min & Year<=max ))
+                  alpha_val=1
             }
       
       
       selected_prof %>%
             
             ggplot (.,aes(x=Year, y=professionals , color = type)) +
-            geom_point(data=selected_prof)+
+            geom_point(alpha= alpha_val)+
             ylab("Total professionals [Per 1000 inhabitants]")+
             xlab("Year") +
             theme(legend.position="bottom", legend.title = element_blank(),
@@ -180,25 +182,25 @@ plot_grads = function (min = 1980, max = 2013, graduates,country){
       
       if (country=="All"){
             selected_grad=filter(graduates, (Year>=min & Year<=max ))
+            alpha_val=0.4
       }
       
       else {
             selected_grad=filter(graduates,Location == country & (Year>=min & Year<=max ))
+            alpha_val=1
       }
       
       
       selected_grad %>%
             
             ggplot (.,aes(x=Year, y=graduates , color = type)) +
-            
-            geom_point(data=selected_grad)+
-            #theme(legend.position="none")+
             ylab("Total graduates [Per 1000 inhabitants]")+
             xlab("Year") +      
             theme(legend.position="bottom", legend.title = element_blank(),
                   panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-                  panel.background = element_rect(fill = 'white', colour = 'grey'))
-      
+                  panel.background = element_rect(fill = 'white', colour = 'grey')) +
+            geom_point(alpha= alpha_val)
+                  
 }
 
 
