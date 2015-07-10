@@ -144,7 +144,6 @@ shinyUI(
             ),
       
  #*********     Second panel **********
-            navbarMenu("More",
             tabPanel("Country",
                      fluidRow(
                            column(10,
@@ -159,10 +158,8 @@ shinyUI(
 #                                           )     
                                     ),
                                     
-            ),
-
-
-            tabPanel("2"                      
+                                  
+                                  
                                   fluidRow(
                                         column(6,
                                           plotOutput("plot_profs")
@@ -172,7 +169,7 @@ shinyUI(
                                         )
                                   )
                               ),
-            )         
+                     
                            column(2,
                                   
                                   helpText("Comparison among countries "),      
@@ -201,7 +198,6 @@ shinyUI(
                         )
                      
             ) 
-            )
       
       
       )
