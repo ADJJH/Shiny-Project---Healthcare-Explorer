@@ -9,25 +9,39 @@ plot_UL = function ( year , df1,df2,country,docs_type){
       
       remuneration <- filter(remuneration, Type_doc_job == docs_type)
       
+      if(year==2011){
       
-      #year = max
-      df_ul = inner_join(docs_consul,remuneration,by=c("Location", "Year"))
       
-      selected=filter(df_ul,Location == country)
-      
-      plot_ul=  df_ul %>%
-                  filter(., Year==year) %>%
-                  ggplot (.,aes(x= Salary, y=Nmr_consult , color = Location)) +
-                        geom_point(colour="#C0C0C0",size = 8) +
-                        geom_point(data=selected,colour="#0C80A9",size = 8)+
-                        theme(legend.position="none") +
-                        ylab(expression(bold("# Consultations [per day]"))) +
-                        xlab (expression(bold('Remuneration of doctors [Ratio to average wage]'))) +
-                        theme_bw() +
-                        theme (panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+            df_ul = inner_join(docs_consul,remuneration,by=c("Location", "Year"))
             
-      df_ul<-df_ul[complete.cases(df_ul),c("Location","Nmr_consult","Salary")]
-           
+            selected=filter(df_ul,Location == country)
+            
+                  
+            plot_ul=  df_ul %>%
+                        filter(., Year==year) %>%
+                        ggplot (.,aes(x= Salary, y=Nmr_consult , color = Location)) +
+                              geom_point(colour="#C0C0C0",size = 8) +
+                              geom_point(data=selected,colour="#0C80A9",size = 8)+
+                              theme(legend.position="none") +
+                              ylab(expression(bold("# Consultations [per day]"))) +
+                              xlab (expression(bold('Remuneration of doctors [Ratio to average wage]'))) +
+                              theme_bw() +
+                              theme (panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+                  
+            df_ul<-df_ul[complete.cases(df_ul),c("Location","Nmr_consult","Salary")]
+      }     
+
+      else {
+            plot_ul =qplot(0,0, geom = "blank")+
+                  theme(legend.position="none") +
+                  ylab(expression(bold("# Consultations [per day]"))) +
+                  xlab (expression(bold('Remuneration of doctors [Ratio to average wage]'))) +
+                  theme_bw() +
+                  theme (panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+            df_ul = inner_join(docs_consul,remuneration,by=c("Location", "Year"))
+            df_ul<-df_ul[complete.cases(df_ul),c("Location","Nmr_consult","Salary")]
+            
+      }
 
       return(list(plot_ul,df_ul))
 }

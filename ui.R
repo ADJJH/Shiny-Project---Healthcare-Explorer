@@ -72,34 +72,47 @@ shinyUI(
                   column(8,
                         h4("Welcome to the Healthcare Explorer"),
                         br(),
+                                                
+                        p(strong("Glocalization") ,"is the combination of the words Localization and 
+                          Globalization. It is defined as the adaptation of global products or services to 
+                          accommodate the needs of people in a specific locale.", tags$sup("1")),
                         
-                        p(" This application is inspired based on the report 'Health at a Glance'
-                        published by OECD (Organisation for Economic Co-operation and Development)."
+                        p("How to accomodate products or services if you don't understand your market?"),
+                        
+                        p("The purpose of this application is to enable the discovery of insights 
+                        and trends of Healthcare systems of OECD countries
+                        in an interactive way."
+                        ),
+                        
+                        
+                        p(" This application is based on the report 'Health at a Glance'
+                        published by OECD (Organisation for Economic Co-operation and Development).
+                        It uses multiple data sets combined into compact views."
                         ),
                   
-                        p(" The purpose of this application is to enable the discovery of insights and trends
-                        in an interactive way. It uses multiple data sets combined into compact views. This helps the user 
-                        to visualize and analyze data in an easier way."
-                        ),
+                        
                         br(),
                      
                         p("The application is divided in two sections:"
                         
                         ),
                      
-                        h5(strong("Year")),
-                     
-                        p( "In this tab you can see how countries compare to others in a specific year."
+                                            
+                        p(strong("Year:"), "In this tab you can see how countries compare with each other
+                          in a specific year."
                         ),
                      
-                        h5(strong("Country")),
-                        p("This tab shows information about the trends of doctors, nurses 
-                          and medical devices for a country"),
+                        p(strong("Country:"),"This tab shows information about the trends of doctors, nurses 
+                        and medical devices for a country"),
                         br(),
                         
                   
                         p("Data was taken from",
-                          a(href="https://data.oecd.org/health.htm", "OECD stats site"), "on July 2015.")
+                          a(href="https://data.oecd.org/health.htm", "OECD stats site"), "on July 2015.",
+                          style = "font-size:8pt;"),
+                        
+                        p(tags$sup("1"),"Deloitte, '2014 Global health care outlook shared challenges,shared opportunities'",
+                          style = "font-size:8pt;")
                   )   
             
             
@@ -110,7 +123,7 @@ shinyUI(
             
                        fluidRow(
                         column(10,
-                               #h3("Healthcare explorer"),
+                               
                                fluidRow(
                                     
                                           column(6, align="center",
