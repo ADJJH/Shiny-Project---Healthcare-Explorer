@@ -176,7 +176,7 @@ shinyUI(
                                
                                helpText("Select a country to highlight"), 
                                selectInput("country",  
-                                           label = "Choose a country to highlight",
+                                           label = "Country",
                                            choices = countries_oecd,
                                            selected = NULL
                                            

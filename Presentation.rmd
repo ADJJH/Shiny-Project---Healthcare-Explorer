@@ -4,18 +4,9 @@ subtitle: "Shiny Project"
 
 author: "Alejandra Jaimes"
 #date: "Friday, July 10, 2015"
-#output: html_document
-output: ioslides_presentation
+output: html_document
+#output: ioslides_presentation
 ---
-
-## Introduction
-Every 2 years, since 2001,the OECD (Organisation for Economic Co-operation and Development) publishes a report called "Health at a Glance". 
-
-It provides the latest comparable data and trends on different aspects of the performance of health systems in OECD countries.
-
-<img src="www/OECDcharts.png" width="500" height="300" align="middle"/>
-
-
 
 ## Glocalization in healthcare
  
@@ -28,41 +19,85 @@ It provides the latest comparable data and trends on different aspects of the pe
 <img src="www/shoes.jpg" width="300" height="200" align="centered"/>
 
 
+
+## Health at a Glance
+Every 2 years, since 2001,the OECD (Organisation for Economic Co-operation and Development) publishes a report called "Health at a Glance". 
+
+It provides the latest comparable data and trends on different aspects of the performance of health systems in OECD countries.
+
+<img src="www/OECDcharts.png" width="500" height="300" align="middle"/>
+
+
+
+
+
 ## Healthcare Explorer
 
-* 12 Healthcare databases from OECD
+* 12 Healthcare data sources from OECD
 
 
 <img src="www/intro_he.png" width="500" height="300" align="centered"/>
 
-## Analytics
-GP Salaried:Slovak Rep  & Finland have similar remmuneration but Slovak Rep has 4 times more consultations
-            Hungary - has the lowest remmuneration and the max number of consultations per day
-            Denmark - has the highest remmuneration and one of the lowest number of consultations 
-GP Self: Tend to be give the same number of consultations. Pharma industry (i.e. marketing)
+## Outcomes (1)
+**General Practicioners Salaried:**  
 
-Japan - Appears to have a robust HC system, with big populaiton and high life exptancy rates.It has the highest number of medical devices and number of beds and the longest stays in hospitals. HOwever these also shows how Japan's healthcare system sustainabilty is in question^2^. 
+* Slovak Rep. and Finland have similar remmuneration but Slovak Rep. has 4 times more consultations  
 
-Austria and Germany: good targets for medical devices. They are strong in hospital resources, have high GDP percentages and could increase the number of devices to support large population (Germany). On top of that, both countries also show a continious growth in the number of exams and units (Austria above average). Numbers of doctors are also increasing, but graduates seem to decrease, so a lead campaign could lead more effect in doctors than in students. 
+* Hungary - has the lowest remmuneration and the max number of consultations per day  
 
-Mexico: Focus on HC leaders!!!!!! and students to create brand prefence. 
+* Denmark - has the highest remmuneration and one of the lowest number of consultations   
+  
+**GP Self-employed:** Tend to be give the same number of consultations. Pharma industry (i.e. marketing)  
 
-Estonia and Turkey could have marketing strategy of refurbished systems. They have low GDP though their number of exams show a fast growth. 
+##Outcomes (2)
+###Japan  
+Appears to have a robust HC system, with big populaiton and high life exptancy rates.It has the highest number of medical devices and number of beds and the longest stays in hospitals.  
+
+However this also shows how Japan's healthcare system sustainabilty is in question^2^.
+
+##Outcomes (3)
+###Austria (2012)  
+
+The hospital stay lenght, number of beds, MRI and CT units and its %GDP show a solid HC system.
+
+Number of CT and MRI exams and units are above the average. Review maintenance contracts and EOL equipment as an strategy. 
+
+##Outcomes (4)
+
+###Mexico: 
+Focus on HC key opinion leaders and students to increase brand prefence. 
+
+###Estonia and Turkey:
+Could have marketing strategy of refurbished systems.  
+They have low %GDP and Estonia's number of exams show a fast growth.  
+Turkey also shows an increase in doctors and nurses, which could be related to the population growth.
+
+##Outcomes (5)
+###Iceland & Luxemburg:  
+Number of examns are above the average. However, number of devices does not show the same growth. 
+ 
+Strategy: use model of charge per exam, plus attractive maitenance contracts. 
+
+##Outcomes (6)
+
+###Spain:
+Considerable decrease in doctor graduates, even when there is a considerable growth in total number of doctors and nurses. 
+
+###UK: 
+Noticeable increase in MRI exams and also in CT units. Strong GDP%, low MRI and CT units compare to the population size. Good opportunity to place new equipment. 
 
 
-Iceland - MRI
+##Outcomes (7)
 
-Luxemburg - PPP investigate or do loving you ge tmoney by exams than by device 
+* The increase in medical devices and exams was expected
 
-Spain - considerable decrase in doctor vs increase in nurses
+* Where are all the graduated nurses and doctors are? HC migration?
 
-UK - noticeable increase in MRI units than in CT units. Strong GDP%, low MRI and CT units. Sell there!
+## Future work
 
-The increase in med devices and exams was expected
-
-
-Where are all the graduated nurses and doctors are? HC migration?
-
+* Collect more data of remuneration per year. 
+* Include more data sources from OECD database 
+* Include market trends from COCIR. 
 
 ##References 
 
