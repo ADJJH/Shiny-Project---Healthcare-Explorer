@@ -1,0 +1,33 @@
+---
+title: "Exploring healthcare systems of OECD countries"
+author: "Alejandra Jaimes"
+date: "July 2015"
+output: html_document
+---
+
+###Introduction
+
+Glocalization is  a term that combines the words "globalization" and "localization" to describe the adaptation of global products or services to accommodate the needs of people in a specific locale^1^. 
+ 
+When I read about this word, it immediatly triggered me the memmories of some mangers saying: "We need to understand the market to position our product...", "What do we know about this country?" or "The director is comming to visit our country and he wants to know some information about it to understand our clients' needs..."
+
+As a professional in the healthcare industry, understanding the market's need is a must. Nowadays it is very easy to find information about the countries. OECD (Organisation for Economic Co-operation and Development) is an excellent source, and specially its "Health at a Glance"^2^ report. It provides the latest comparable data and trends on different aspects of the performance of health systems in OECD countries.
+
+I find this report very enriching, but sometimes I find it difficult to link different topics or parameters. For example, from the charts below, you can see one chart shows the total number days length stay in a hospital, and in a different chart the total number of beds. So the question is: can we find any relationship or any pattern if we combine them? 
+
+### Finding insigths
+
+Using OECD Healthcare data, I designed the "Healthcare Explorer". It is an application where the information is shown in an interactive and condensed way. This allows users to discover patterns, outliers and get general insights about healthcare systems in OECD countries. 
+
+ 
+
+
+##References 
+
+1. Deloitte, "2014 Global health care outlook Shared challenges,shared opportunities" 
+https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Life-Sciences-Health-Care/dttl-lshc-2014-global-health-care-sector-report.pdf
+
+2. McKinsey
+"Improving Japan's health care system"
+http://www.mckinsey.com/insights/health_systems_and_services/improving_japans_health_care_system
+
